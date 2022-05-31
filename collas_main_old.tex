@@ -1,0 +1,284 @@
+% This file was adapted from ICLR2022_conference.tex example provided for the ICLR conference
+\documentclass{article} % For LaTeX2e
+\usepackage{collas2022_conference,times}
+\usepackage{multirow}
+
+% Optional math commands from https://github.com/goodfeli/dlbook_notation.
+\input{math_commands.tex}
+
+% Please leave these options as they are
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=red,
+    filecolor=magenta,      
+    urlcolor=blue,
+    citecolor=purple,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
+
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{comment}
+\usepackage{amsmath}
+\usepackage{wrapfig}
+
+\newcommand{\Scd}[1]{\textit{{\color{blue} #1}}}
+\newcommand{\kf}[1]{{\color{red} #1}}
+\newcommand{\tiago}[1]{{\color{orange} #1}}
+
+\captionsetup[figure]{format=plain, labelformat=simple, labelsep=period}
+
+\title{On making optimal transport robust to all outliers}
+
+% Authors must not appear in the submitted version. They should be hidden
+% as long as the \collasfinalcopy macro remains commented out below.
+% Non-anonymous submissions will be rejected without review.
+
+\author{Antiquus S.~Hippocampus, Natalia Cerebro  \thanks{ Use footnote for providing further information
+about author (webpage, alternative address)---\emph{not} for acknowledging
+funding agencies.  Funding acknowledgements go at the end of the paper.} \\
+Department of Computer Science\\
+Random University\\
+Country \\
+\texttt{\{hippo,brain\}@cs.random.edu} \\
+\And % Use And to have authors side by side
+Koala Learnus \& D. Q. ResNet  \\
+Department of Computational Neuroscience \\
+University of Random City \\
+Another Country \\
+\texttt{\{koala,net\}@random.rand} \\
+\AND % Use AND to have authors block one under the other
+Coauthor \\
+Affiliation \\
+Address \\
+\texttt{email}
+}
+
+% The \author macro works with any number of authors. There are two commands
+% used to separate the names and addresses of multiple authors: \And and \AND.
+%
+% Using \And between authors leaves it to \LaTeX{} to determine where to break
+% the lines. Using \AND forces a linebreak at that point. So, if \LaTeX{}
+% puts 3 of 4 authors names on the first line, and the last on the second
+% line, try using \AND instead of \And before the third author name.
+
+\newcommand{\fix}{\marginpar{FIX}}
+\newcommand{\new}{\marginpar{NEW}}
+
+% \collasfinalcopy % Uncomment for camera-ready version, but NOT for submission.
+
+\begin{document}
+
+
+\maketitle
+
+%\begin{abstract}
+%Optimal transport (OT) seeks the minimum displacement cost of moving a measure to another. To transport measures, OT relies on marginal constraints which makes it sensitive to outliers present in the measures. To mitigate this weakness, several robust OT variants were proposed based on relaxed marginal constraints. These variants define outliers as samples which are expensive to move to the other distribution. Thus, if a sample is more costly to transport than violating the mass penalty, it is not transported. In this paper, we argue that this is a restricted definition as outliers can be samples which are far from clean samples but close to the other distribution. Robust OT variants fail to address this problem and they tend to give even bigger measure weights to such outliers than clean samples. To address this, we propose to consider a classification problem between source and target samples where such outliers can be seen as noisy label samples. We then train a classifier using adversarial training to make it robust to these noisy labels classify source and target samples. Based on the difference between the classification and the given label, we then propose two reweighting strategies to mitigate the weights of the detected outliers. We evaluate our method on Wasserstein barycenter, gradient flow, generative models and label propagation experiments which show that we successfully detected the outliers and did not consider them in the transport problem.
+%\end{abstract}
+
+
+\begin{abstract}
+Optimal transport (OT) seeks the minimum displacement cost of moving a measure to another. To transport measures, OT relies on marginal constraints which makes it sensitive to outliers present in the measures. Robust OT variants have been proposed based on the definition that outliers are samples which are expensive to move to the other distribution. In this paper, we argue that this is a restricted definition as outliers can be samples which are far from clean samples but close to the other distribution. Robust OT variants fail to address this problem and they tend to give even bigger measure weights to such outliers than clean samples. To make them robust against such outliers, we propose to consider a classification problem between source and target samples where such outliers can be seen as noisy label samples. We then train a classifier using adversarial training to make it robust to these noisy labels classify source and target samples. Based on the difference between the classification and the given label, we then propose two reweighting strategies to mitigate the weights of the detected outliers. We evaluate our method on Wasserstein barycenter, gradient flow, generative models and label propagation experiments which show that we successfully detected the outliers and did not consider them in the transport problem.
+\end{abstract}
+
+
+
+\section{Introduction}
+
+%\paragraph{Computing distances between probability measures with OT}
+Comparing probability distributions is a fundamental problem in machine learning specially as many probability distributions have disjoint supports. One can use Optimal Transport (OT) \citep{COT_Peyre} to achieve this. OT compares probability distributions by looking for the minimum displacement cost from a distribution to another with respect to a ground cost. To assure that all mass is transported, the marginals of the optimal transport plan need to be equal to the input probability weights. Under some hypothesis on the ground cost, it can even define a distance between probability distributions and it is known as the Wasserstein distance (denoted $W$). This ability to discriminate distributions has made it a useful tool for many machine learning applications. It has been used in domain adaptation to transport source labeled samples to the target domain \citep{Courty_OTDA} or to align samples in an embedded space in \cite{courty_jdot, Damodaran_2018_ECCV, fatras21a}. OT has also been used as a loss function in supervised learning \citep{frogner_2015} and in generative models \citep{arjovsky17a, genevay18a, burnel2021}. Despite its many success, OT has been shown to be sensitive to outliers. Indeed when datasets are tainted by outliers, the marginal constraints on the transport plan force the OT cost to transport all samples including outliers. This could impact negatively the performances of neural networks as in generative models where the generators would generate outliers \citep{balaji2020robust} or in partial domain adaptation \citep{fatras21a} where some classes in the source domain would be transported to the target domain where these classes are not present.
+
+%\paragraph{OT robust to outliers}
+This weakness to outliers raised some attention in the machine learning community and several optimal transport variants were published to fix it, \emph{i.e., variants which would not transport them}. The main considered direction to make optimal transport robust to outliers was to decrease the mass of outliers samples. To do so, they replaced the hard marginal constraints by soft penalties following the framework of unbalanced OT \citep{Liero_2017, Hanin1992, piccoli2014}. This formulation considers what is the more costly between transporting the samples or violating the mass penalty. Built upon this theory, \citep{balaji2020robust, RobustOptimalTransport2022Nietert} looked for relaxed measures which minimized the optimal transport cost. The intuition is that by minimizing the OT cost, outliers, which are costly to transport, would have a smaller mass. To prevent over-relaxation, they control the distances between the relaxed and original probability distributions with a $f$-divergence. Finally, \cite{mukherjee2020outlierrobust} added a Total Variation norm term in the objective which was shown to correspond to a truncated ground cost. However, the definition of outliers they considered is restricted and we highlight some of its weaknesses.
+
+Previous work \citep{balaji2020robust, mukherjee2020outlierrobust, RobustOptimalTransport2022Nietert} defined outliers as \emph{samples which are costly to transport to the other distribution}, formally:
+
+\begin{definition}
+Let $\alpha, \beta$ be two probability distributions $\alpha, \beta \in \mathcal{M}_+^1(\mathcal{X})$. We consider that $\alpha$ is tainted with a fraction $\kappa \in \mathbb{R}$ of outliers, formally let $\alpha = (1-\kappa) \alpha_c + \kappa \alpha_o$, where $\alpha_c$ is the clean $\alpha$ distribution and $\alpha_o$ the noisy distribution. Then, $\alpha_o$ is considered an outlier distribution if $W(\alpha_c, \beta) \leq W(\alpha_o, \beta)$.
+\end{definition}
+%\paragraph{Outliers and ground cost}
+The robust variants to outliers are then well designed to handle the case where $W((1-\kappa)\alpha_c + \kappa \delta_{\zz_{0}}, \beta) \rightarrow \infty$ when $c(\zz_{0}, \yy) \rightarrow \infty$ for all $\yy$. This restricted definition of outliers leads to a problem where outliers are always transported and that has not been discussed in the literature before: \emph{the case where outliers are far from the majority of clean samples and are closer to the other measure.} We illustrate this phenomenon in Figure \ref{fig:toy_uot_outlier} and study unbalanced OT. We consider two uniform 2D probability distributions composed of 75 samples each with 10 outliers. 5 outliers and far from both distributions while the 5 remaining are closer to the other distribution than the majority of their distribution samples. We plot the connections between samples and normalized the connection intensities by the largest intensity. We can even observe the worst case scenario for small $\tau$ values where the biggest and few connections are the connections of outliers close to the other distributions which is the opposite of what we want. In this setting, all the above described formulation would transport these outliers to the target measure because they are not costly to transport with respect to clean samples as unbalanced optimal transport does. 
+%In the worst case scenario, by decreasing the soft penalization between relaxed and input measures, they would only transport these outlier samples.
+Furthermore, the dependence on the ground cost makes the formulation particularly weak to this problem when one considers a non meaningful distance. For instance the euclidean distance, which compare images using a distance between pixels, is not meaningful between images and it forced \cite{genevay18a} to use a feature extractor. Finally, a sample could be considered as an outlier for some distances and as a clean sample for others.
+
+In this paper, we propose a method to detect these outliers and to decrease their mass. We propose to train a classifier to classify source and target samples. In this scenario, outliers which are close to the other measures can be seen as noisy label samples and the classifier could overfit over them. Thus, we want our classifier to be robust against noisy labels and to do this, we use the virtual adversarial training algorithm \cite{Miyato2019} which was shown to be robust against noisy labels \citep{Fatras2021WAR}. When the classification of a sample does not match its assign label, we consider the sample as an outlier and decrease its mass by using a hard reweighting strategy, by assigning them a weight equal to 0, or a soft reweighting strategy, by modifying the used ground cost and to take into account the classification of samples.
+
+%\begin{figure}[t]
+%    \centering
+%        \includegraphics[width=0.8\linewidth]{figs/ot_plans_uot.pdf}
+%    \caption{Illustration of unbalanced optimal transport plan on a 2D dataset for different $\tau$ coefficients. The source and target distributions are tainted with outliers which are close or far to the other distribution.}
+%    \label{fig:toy_uot_outlier}
+%\end{figure}
+
+\begin{figure}[t]
+  \begin{center}
+    \includegraphics[width=0.85\linewidth]{figs/ot_plans_uot.pdf}
+  \end{center}
+  %\vspace{-0.5cm}
+    \caption{(Best view in colors) Illustration of unbalanced optimal transport plan on a 2D dataset for different $\tau$ coefficients. The source and target distributions are tainted with outliers which are close or far to the other distribution. Intensities are normalized by the maximum value of the transport plan.}
+    \label{fig:toy_uot_outlier}
+\end{figure}
+
+%\paragraph{Structure of the paper}
+The paper is structured as follows. In Section \ref{sec:rw}, we review the different methods for outlier detection and the discuss in more details the different optimal transport variants robust to outliers. In Section \ref{sec:proposed_methods}, we present our method against close-to-target outliers as well as the components it is built upon such as the virtual adversarial training. In Section \ref{sec:experiments}, we empirically evaluate our method on Wasserstein barycenter, gradient flow and label propagation experiments.
+
+
+\section{Related work on robust optimal transport and outliers}\label{sec:rw}
+
+In this section, we start by defining formally the optimal transport cost as well as some robust to outlier variants. We then present standard methods to detect outliers.
+
+%\subsection{Optimal transport and robust variants}
+
+\paragraph{Optimal Transport} To compare a measure to another, the optimal transport cost measures the minimal displacement cost of moving a probability distribution $\alpha$ to another probability distribution $\beta$ with respect to a ground metric $c$ on the data space $\mathcal{X}$ and $\mathcal{Z}$ \citep{COT_Peyre}. Formally, let $(\alpha, \beta) \in \mathcal{M}_{+}^1(\mathcal{X}) \times \mathcal{M}_{+}^1(\mathcal{Z})$, where $\mathcal{M}_{+}^1(\mathcal{X})$ (resp.\ $\mathcal{M}_{+}^1(\mathcal{Z})$) is the set of probability measures on $\mathcal{X}$ (resp. $\mathcal{Z}$). For a ground cost on the data space $c:\mathcal{X}\times \mathcal{Z} \mapsto \mathbb{R}_+$, the optimal transport cost between the two distributions $\alpha, \beta$ is 
+\begin{equation}
+    W_{c}(\alpha, \beta) = \underset{\pi \in \mathcal{U}(\alpha, \beta)}{\text{min}} \int_{\mathcal{X}\times \mathcal{Z}}c(\xx,\zz) d\pi(\xx,\zz),
+\label{eq:wasserstein_dist}
+\end{equation}
+where $\mathcal{U}(\alpha, \beta)$ is the set of joint probability distributions with
+marginals $\alpha$ and $\beta$ such that 
+$
+\mathcal{U}(\alpha, \beta) = \left \{ \pi \in \mathcal{M}_{+}^1(\mathcal{X}, \mathcal{Z}): \PP_{\mathcal{X}}\#\pi = \alpha, \PP_{\mathcal{Z}}\#\pi = \beta \right\}\nonumber
+$. {$\PP_{\mathcal{X}}\#\pi$ (resp.\ $\PP_{\mathcal{Z}}\#\pi$) is the marginalization of $\pi$ over $\mathcal{X}$ (resp.\ $\mathcal{Z}$)}. These constraints enforce that all the mass from $\alpha$ is transported to $\beta$ and vice-versa. The problem of this formulation is that OT is sensible to outliers as their mass would be transported because of the marginal constraints. 
+
+\paragraph{Unbalanced Optimal Transport} While it has been first used to compare measures of different mass by relaxing the conservation of mass constraints, the unbalanced optimal transport cost has been used for its robustness to outlier properties. It replaces the 'hard' marginal constraints of OT by 'soft' penalties using Csisz\`ar divergences \citep{Liero_2017, figalli_partial, chapel2020partial} or integral probability metrics~\citep{nath2020unbalanced}. Consider the Kullback-Leibler divergence ($ \texttt{KL}(\xx|\yy) = \sum_{i} \xx_{i}\log(\frac{\xx_{i}}{\yy_i}) - \xx_{i} + \yy_i$) and consider two positive distributions $\alpha, \beta \in \mathcal{M}_{+}(\mathcal{X})$. The entropic UOT program between distributions and cost $c$ is defined as
+\begin{equation}
+  \operatorname{OT}_\phi^{\tau, \varepsilon}(\alpha, \beta, c) = \underset{\pi \in \mathcal{M}_+(\mathcal{X}^2)}{\text{min}} \int cd\pi + \varepsilon \texttt{KL}(\pi|\alpha \otimes \beta)  + \tau (\texttt{KL}(\pi_1\|\alpha)  + \texttt{KL}(\pi_2\|\beta)),
+\label{eq:uot_def}
+\end{equation}
+where $\pi$ is the transport plan, $\pi_1$ and $\pi_2$ the plan's marginals, $\tau$ is the marginal penalization and $\varepsilon \geq 0$ is the regularization coefficient. Note that the marginals of $\pi$ are no longer equal to $(\alpha,\beta)$ in general. The solution is computed via a generalized Sinkhorn algorithm~\citep{ChizatPSV18} with a complexity of $\tilde{O}(n^2/\epsilon)$~\citep{pham20a}. UOT showed some robustness properties against Dirac outliers \citep{fatras21a}.
+
+\paragraph{Robust Optimal Transport} The robust optimal transport formulation \citep{RobustOptimalTransport2022Nietert} is defined as
+\begin{equation}
+\operatorname{ROT}_\varepsilon(\alpha, \beta, c) =  \min_{\substack{\alpha^\prime
+\beta^\prime \in \mathcal{M}_+(\mathcal{X}); \\ \alpha^\prime \leq \alpha, \|\alpha^\prime - \alpha\| \leq \varepsilon; \\ \beta^\prime \leq \beta, \|\beta^\prime - \beta\| \leq \varepsilon}} \operatorname{W}_{c}\left(\frac{\alpha^\prime}{\alpha^\prime(\mathcal{X})}, \frac{\beta^\prime}{\beta^\prime(\mathcal{X})} \right),
+\label{eq:robust}
+\end{equation}
+
+and the main difference with \citep{balaji2020robust} is that the measures have to be probability measures $\alpha^\prime, \beta^\prime \in \mathcal{M}_+^1(\mathcal{X})$. \cite{mukherjee2020outlierrobust} used a truncated ground cost $c_{\lambda}$ in the original OT formulation (Eq. \ref{eq:wasserstein_dist}) and thus, their formulation can be solved with any modern OT solver. They solved $W_{c_{\lambda}}(\alpha, \beta)$ with $c_{\lambda}(\xx_i, \yy_j) = \min\{c(\xx_i, \yy_j), 2\lambda \}$.
+Another direction was proposed in \citep{staerman21a} where authors proposed a median of means approach to tackle the dual Kantorovich problem from a robust statistics perspective. The current method to detect outliers is to use the value of a ground cost to detect outliers and to hyper-tune a given parameter to not transport samples which are costly to move.  In the next paragraph, we present some basic definitions and methods to detect outliers.
+
+
+\paragraph{Detection of outliers}
+
+Many definitions for outliers have been proposed in the literature but none of them has been universally accepted. For instance in \cite{barnett1994outliers} defines an outlier to be one or more observations, which are not consistent among others and in \cite{Navarro2021} an outlier is defined as a point is outside a certain ball centered at the center of the sample. After relying on some definition, one tries to detect them but it is a complicated challenge especially in high dimension. Several methods try to estimate the covariance matrix \citep{Pena2001, Friedman1987}. Other methods rely on clustering algorithms and define outliers as samples which do not belong to clusters \citep{Aggarwal99, Aggarwal2000, Ester96, Guha98, knorr98}.  However, when dealing with high dimensional data, many methods are not suited to deal with the curse of dimension \citep{knorr98, Arning96, Breunig2000}.  That is why some methods use one-dimensional random projection to detect outliers \citep{Navarro2021}, other methods rely on projection which maximize or minimize some statistical criterion such as the kurtosis with projection pursuit \citep{Herwindiati2007}. A full survey on outlier detection can be found in \cite{Aggarwal2017}. We propose to rely on another definition of outliers as samples which have a different classification than a given label in our two-classes \tiago{binary?} classification problems.
+
+\section{Proposed methods}\label{sec:proposed_methods}
+
+In this section, we present our algorithm to detect the presence of outliers which are close to another measure and then we present how we modify existing robust to outliers OT cost to tackle the outliers close to the other measures. 
+
+
+\subsection{Adversarial regularization against label noise}
+We consider a classification problem where we have access to samples and their label $\mathcal{D} = \big\{ (\xx_i, \yy_i) \big\}_{i=1}^n, \xx_i \in \mathbb{R}^d$. It is well known that classifier has strong memory abilities \citep{Zhang_2017} and thus, they can easily overfit on noisy labels. To prevent this overfitting issues we want to smooth the decision boundaries of the classifier where it is locally broken because of noisy labels. This can be done with adversarial training where the prediction of perturbed inputs are forced to match the label of the clean input. Formally,
+\begin{equation}\label{eq:robust}
+\argmin_\theta \sum_{i=1}^N \max_{\xx^u_i \in \mathcal{U}_i} L(f_{\theta}(\xx_i^u),\yy_i),
+\end{equation}
+
+where $\mathcal{U}_i$ is the neighborhood of input $\xx_i$. Unfortunately, the perturbation $\xx^u_i$ is intractable in practice and that is why we rely on adversarial training \cite{Goodfellow2015} where the max is replaced by the direction which produces the maximum variation in the prediction. However adversarial training uses labels which can be potentially noisy, thus we rely on the adversarial regularization which replace the label used in adversarial training by the classifier prediction \cite{Miyato2019}. The optimized loss is then
+\begin{equation}
+    L_{tot}(f_{\theta}(\xx_i),\yy_i) = L_{\text{CE}}(f_{\theta}(\xx_i),\yy_i) + \beta \operatorname{R}_{\texttt{KL}}(\xx_i,{f_\theta}),
+\end{equation}%$$,
+where $R_{AR}$ is a regularization term defined as:
+\begin{align}\label{AR}
+    &\operatorname{R}_{\texttt{KL}}(\xx_i,{f_\theta}) = \texttt{KL}(f_{\theta}(\xx_i+ \rr_i^a), f_{\theta}(\xx_i))\;\; \nonumber \\
+    &\text{with } \rr_i^a = \underset{\rr_i,\|\rr_i\| \leq \varepsilon}{\text{argmax }} \texttt{KL}(f_{\theta}(\xx_i + \rr_i),f_{\theta}(\xx_i)).
+\end{align}
+Where $f_{\theta}(\xx_i + \rr^a)$ is the neural network prediction of the adversarial input. $\operatorname{R}_{\texttt{KL}}$ forces the local Lipschitz constant to be small with respect to the divergence $\texttt{KL}$. The adversarial regularization was first designed to solve semi-supervised problem \citep{Miyato2019} but has been proven to be efficient against label noise \citep{Fatras2021WAR}. The adversarial direction is approximated using the power iteration algorithm \citep{GOLUB2000}. Thus we want to take advantage of this regularization to detect samples which are annotated as a distribution but classified as another. In the next section, we describe our full method.
+
+\subsection{Methods}
+In this section, we define our methods and how we modify the optimal transport cost to mitigate the influence of outliers. Then we illustrate our method on a two-dimensional problem.
+
+\paragraph{Classifiers}
+We recall that outliers can be samples which are far from both distributions and that will be costly to transport or samples which belong to one measure and are closer to the other measure than the majority of samples. We remind the reader that the former is taken into account with the standard robust to outlier optimal transport variant contrary to the latter. To handle these outliers, we consider a binary classification problem where one wants to classify source and target samples. Our intuition is to use the classifier to detect them and to decrease their mass. In the classification setting, these outliers can be seen as noisy labels and unfortunately classifiers can overfit on such labels \citep{Zhang_2017}. That is why we want to use a robust to label noise training procedure to train our classifier, such as the adversarial regularization \citep{Miyato2019, Fatras2021WAR}, to detect these outliers which are closer to the other measure. Following this intuition, \emph{we define outliers as samples which are expensive to transport or as samples whom the prediction is different to the assigned label}. By a nice reformulation of the ground cost which takes into account the classifier, all outliers could be defined as samples costly to transport. Once the outliers have been detected, we have two strategies to decrease their mass that we develop in the next paragraph.
+
+\paragraph{Weights}
+Once outliers have been detected using our classifiers, we can define a hard reweighting strategy to decrease their weight in the empirical distributions. It corresponds to the give them a mass equal to 0 and to normalize the weights of the remaining samples in order to keep a probability distributions. This strategy has the benefit to be used in the original OT cost without more modifications. However such a strategy would rely on the performances of the classifier to correctly detect all of the outliers and that the classifier has classified all clean samples correctly. This is why we propose another soft reweighting strategy through the ground cost.
+
+Our soft reweighting strategy consist in associating higher weights to detected outliers and to let the considered robust OT cost give them a smaller weight. To achieve this, we propose to modify the ground cost by considering the classification of samples. Denote the label of source samples as $\yy_s$ and the label of target samples as $\yy_t$. We propose to elegantly change the ground cost as:
+
+\begin{equation}
+    c^\prime(\xx_i, \zz_j) = \|\xx_i - \zz_j\|_2 + \frac{1}{\operatorname{CE}(\yy_s, f(\zz_j))} + \frac{1}{\operatorname{CE}(\yy_t, f(\xx_i))}.
+\end{equation}
+\tiago{as opposed to?}
+We now give an intuition on how the ground cost work. When the classification is different of the considered label, the cross-entropy loss is then high and the new terms in the ground cost are small. However, if the sample $\xx_i$ (resp. $\zz_j$) is an outlier that has been detected by the classifier, then its prediction would be equal to $\yy_t$ (resp. $\yy_s$) and the extra term would then be high leading to a costly to transport sample. Thus, by considering a good enough hyper-paramereter in the considered robust to outlier OT cost, as it is now a sample which is costly to transport, it would have a small mass. In the case where some samples are close to the decision boundary, their associated cost would be bigger but they would still be transported with respect to detected outliers. In the next paragraph we illustrate the relevance of our approach on a 2D toy problem. 
+
+\paragraph{Computation}
+
+Our hard weighting method changes the input distribution weights without modifying the definition of optimal transport costs and thus, it can be added to any OT cost to make them robust to outliers similar to the target distribution. Specifically, one can use it in the current robust to outliers OT variant to make them robust to even more outliers as we will show in the experimental version. This is not the case of our soft weighting strategy which modifies the ground cost. Unfortunately, as the ground cost changes, the dual formulation of many optimal transport losses changes as well. That is why for many applications which rely on the dual formulation of optimal transport, we can not use the soft weighting strategy and rely on the hard weighting strategy.
+
+\paragraph{Toy example}
+In this section, we consider the same example as in Figure \ref{fig:toy_uot_outlier}. We recall that we have two uniform probability distributions composed of 75 samples each with 10 outliers. We plot the connections between samples and normalized the connection intensities by the largest intensity. Like the unbalanced OT cost, our method with the classifier trained with cross-entropy transports outliers close to the other distributions when the $\tau$ coefficient decreases because it has not detected outliers as the neural network has overfitted over noisy labels. However, when we consider the adversarial regularization, we can see that the outliers close to the other distributions are detected. Thus the hard weighting strategy remove their mass and their influence on the transport problem. Regarding the soft reweighting strategy, for large values of $\tau$, we still transport some mass of outlier samples but when $\tau$ decreases, we only transport clean samples. These toy experiment shows the interest of our strategy to detect and mitigate the influence of outliers close to the other distribution.
+
+\begin{figure}[t]
+  \begin{center}
+    \includegraphics[width=0.7\linewidth]{figs/ot_plans_merged.pdf}
+  \end{center}
+  %\vspace{-0.5cm}
+    \caption{(Best view in colors) Illustration of unbalanced optimal transport plan on a 2D dataset for different $\tau$ coefficients. The source and target distributions are tainted with outliers which are close or far to the other distribution. Intensities are normalized by the maximum value of the transport plan.}
+    \label{fig:toy_classif_outlier}
+\end{figure}
+
+\section{Experiments}\label{sec:experiments}
+
+\paragraph{Wasserstein barycenter 2D}
+\kf{TO DO}
+
+\paragraph{Generative Adversarial Networks on Cifar-10}
+We consider the problem of Generative Adversarial Networks (GANs) where one wants to generate images which look like real images. The problem takes the form of a data fitting problem where we want to fit a parametric model $\beta_\theta$, \emph{i.e.,} images generated from a generator, to some empirical distribution $\alpha$, \emph{i.e.,} the distribution of real images. We consider the case where $\alpha$ is tainted with samples relatively similar to $\beta_\theta$. We artificially create these samples by generating samples from the generator that we perturbed using a normal distribution $\mathcal{N}(0, \sigma^2)$ where $\sigma^2$ is generated using a signal-to-ratio, $\sigma = \frac{\|X\|^2}{\|\epsilon\|^2}$ with $X\sim \beta_\theta$. We denote this distribution $\alpha_o$, the clean distribution $\alpha_c$ and then we consider the distribution $\alpha = (1-\kappa) \alpha_c + \kappa \alpha_o$, where $\kappa$ is the noise rate that we consider of 10$\%$ and 20$\%$. We then want to fit $\beta_\theta$ to $\alpha$.
+
+We consider the dataset of images Cifar10 \kf{ ref}. To evaluate our method, we associate it with the general robust optimal transport variant of \cite{RobustOptimalTransport2022Nietert} which generalizes the work \cite{balaji2020robust}. Because we rely on the robust variant from \cite{RobustOptimalTransport2022Nietert}, we can not use our soft weighting strategy as they use the dual of their formulation. This is why we use our hard weighting strategy. We then compare our method to the robust OT GAN variant as well as WGAN \cite{arjovsky17a} with the inception score \kf{ref}. Regarding the architecture of our generator and critic networks as well as the training procedure, we considered the setting developed in \kf{REF MMD GAN} where they are composed of 3 convolutional layers and the optimizer is Adam.
+
+
+
+
+\begin{table}[t!]
+\begin{center}
+\begin{tabular}{ |c|c|c|c|c|c|c| } 
+ \hline
+ Noise rate & SROT (H-AR) & WGAN-GP & ROT (0.1) & ROT(0.25) & ROT(0.5) & ROT(0.75) \\ 
+ \hline
+ 10$\%$ & \textbf{5.0 $\pm$ 0.1} & 3.56 $\pm$ 0.06 & 3.82 $\pm$ 0.1 & 3.85 $\pm$ 0.16 & 3.85 $\pm$ 0.08 & 3.30 $\pm$ 0.09\\
+ 15$\%$ & \textbf{4.85 $\pm$ 0.1} & 3.08 $\pm$ 0.04 & 3.10 $\pm$ 0.07 & 3.07 $\pm$ 0.09 & 3.32 $\pm$ 0.09 & 2.54 $\pm$ 0.05\\
+ \hline
+\end{tabular}
+\end{center}
+\caption{Inception scores of several GAN on Cifar-10}
+\end{table}
+
+\begin{figure}[t]
+  \begin{center}
+    \includegraphics[width=1.\linewidth]{figs/gen_imgs_fig_paper.pdf}
+  \end{center}
+  %\vspace{-0.5cm}
+    \caption{Generated images from different GANs}
+    \label{fig:gan_generated_imgs}
+\end{figure}
+
+\begin{figure}[t]
+  \begin{center}
+    \includegraphics[width=1.\linewidth]{figs/wasserstein_distance_evolution_rot.pdf}
+  \end{center}
+  %\vspace{-0.5cm}
+    \caption{Wasserstein value for gradient flow}
+    \label{fig:gradient_flow_wass_values}
+\end{figure}
+
+
+\paragraph{Label propagation on digits datasets}
+Following Flamary exp
+
+
+\paragraph{Gradient flow on CelebA}
+From a random normal gaussian measure to celabA between 5000 images and then using minibatch Wasserstein.
+
+%\paragraph{Monge map on CelebA}
+%In this experiment, we want to learn a map which transforms a distribution to another. We follow the experimntal setting from \citep{seguy2018large}. From a random Gaussian to celabA between 5000 images and then using minibatch Wasserstein.
+
+
+
+\newpage
+\bibliography{collas2022_conference}
+\bibliographystyle{collas2022_conference}
+
+\end{document}

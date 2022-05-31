@@ -1,0 +1,1313 @@
+@InProceedings{goldfeld20a,
+  title = 	 {Gaussian-Smoothed Optimal Transport: Metric Structure and Statistical Efficiency},
+  author = 	 {Goldfeld, Ziv and Greenewald, Kristjan},
+  booktitle = 	 {Proceedings of the Twenty Third International Conference on Artificial Intelligence and Statistics},
+  pages = 	 {3327--3337},
+  year = 	 {2020},
+  editor = 	 {Chiappa, Silvia and Calandra, Roberto},
+  volume = 	 {108},
+  series = 	 {Proceedings of Machine Learning Research},
+  address = 	 {Online},
+  month = 	 {26--28 Aug},
+  publisher = 	 {PMLR},
+  pdf = 	 {http://proceedings.mlr.press/v108/goldfeld20a/goldfeld20a.pdf},
+  url = 	 {http://proceedings.mlr.press/v108/goldfeld20a.html},
+  abstract = 	 {Optimal transport (OT), and in particular the Wasserstein distance, has seen a surge of interest and applications in machine learning. However, empirical approximation under Wasserstein distances suffers from a severe curse of dimensionality, rendering them impractical in high dimensions. As a result, entropically regularized OT has become a popular workaround. However, while it enjoys fast algorithms and better statistical properties, it looses the metric structure that Wasserstein distances enjoy. This work proposes a novel Gaussian-smoothed OT (GOT) framework, that achieves the best of both worlds: preserving the 1-Wasserstein metric structure while alleviating the empirical approximation curse of dimensionality. Furthermore, as the Gaussian-smoothing parameter shrinks to zero, GOT $\Gamma$-converges towards classic OT (with convergence of optimizers), thus serving as a natural extension. An empirical study that validates the theoretical results is provided, promoting Gaussian-smoothed OT as a powerful alternative to entropic OT.}
+}
+
+
+
+
+@ARTICLE{burnel2021,
+  author={Burnel, Jean-Christophe and Fatras, Kilian and Flamary, R{\'e}mi and Courty, Nicolas},
+  journal={IEEE Transactions on Geoscience and Remote Sensing}, 
+  title={Generating natural adversarial Remote Sensing Images}, 
+  year={2021}}
+
+
+@InProceedings{fatras20a,
+  title = 	 {Learning with minibatch Wasserstein  : asymptotic and gradient properties},
+  author = 	 {Fatras, Kilian and Zine, Younes and Flamary, R\'emi and Gribonval, Remi and Courty, Nicolas},
+  booktitle = 	 {Proceedings of the Twenty Third International Conference on Artificial Intelligence and Statistics},
+  pages = 	 {2131--2141},
+  year = 	 {2020},
+  editor = 	 {Chiappa, Silvia and Calandra, Roberto},
+  volume = 	 {108},
+  series = 	 {Proceedings of Machine Learning Research},
+  address = 	 {Online},
+  month = 	 {26--28 Aug},
+  publisher = 	 {PMLR},
+  pdf = 	 {http://proceedings.mlr.press/v108/fatras20a/fatras20a.pdf},
+  url = 	 {http://proceedings.mlr.press/v108/fatras20a.html},
+  abstract = 	 {Optimal transport distances are powerful tools to compare probability distributions and have found many applications in machine learning. Yet their algorithmic complexity prevents their direct use on large scale datasets. To overcome this challenge, practitioners compute these distances on minibatches i.e., they average the outcome of several smaller optimal transport problems. We propose in this paper an analysis of this practice, which effects are not well understood so far. We notably argue that it is equivalent to an implicit regularization of the original problem, with appealing properties such as unbiased estimators, gradients and a concentration bound around the expectation, but also with defects such as loss of distance property. Along with this theoretical analysis, we also conduct empirical experiments on gradient flows, GANs or color transfer that highlight the practical interest of this strategy.}
+}
+
+@misc{fatras2021minibatch,
+    title={Minibatch optimal transport distances; analysis and applications}, 
+    author={Kilian Fatras and Younes Zine and Szymon Majewski and Rémi Flamary and Rémi Gribonval and Nicolas Courty},
+    year={2021},
+    eprint={2101.01792},
+    archivePrefix={arXiv},
+    primaryClass={stat.ML}
+}
+
+@inproceedings{zhang2018mixup,
+title={mixup: Beyond Empirical Risk Minimization},
+author={Hongyi Zhang and Moustapha Cisse and Yann N. Dauphin and David Lopez-Paz},
+booktitle={International Conference on Learning Representations},
+year={2018},
+url={https://openreview.net/forum?id=r1Ddp1-Rb},
+}
+
+@incollection{Chapelle2001,
+title = {Vicinal Risk Minimization},
+author = {Olivier Chapelle and Weston, Jason and Bottou, L\'{e}on and Vladimir Vapnik},
+booktitle = {Advances in Neural Information Processing Systems 13},
+editor = {T. K. Leen and T. G. Dietterich and V. Tresp},
+pages = {416--422},
+year = {2001},
+publisher = {MIT Press},
+url = {http://papers.nips.cc/paper/1876-vicinal-risk-minimization.pdf}
+}
+
+@InProceedings{Damodaran_2018_ECCV,
+author = {Bhushan Damodaran, Bharath and Kellenberger, Benjamin and Flamary, Remi and Tuia, Devis and Courty, Nicolas},
+title = {DeepJDOT: Deep Joint Distribution Optimal Transport for Unsupervised Domain Adaptation},
+booktitle = {The European Conference on Computer Vision (ECCV)},
+month = {September},
+year = {2018}
+}
+
+@incollection{courty_jdot,
+title = {Joint distribution optimal transportation for domain adaptation},
+author = {Courty, Nicolas and Flamary, R\'{e}mi and Habrard, Amaury and Rakotomamonjy, Alain},
+booktitle = {Advances in Neural Information Processing Systems 30},
+editor = {I. Guyon and U. V. Luxburg and S. Bengio and H. Wallach and R. Fergus and S. Vishwanathan and R. Garnett},
+pages = {3730--3739},
+year = {2017},
+publisher = {Curran Associates, Inc.},
+url = {http://papers.nips.cc/paper/6963-joint-distribution-optimal-transportation-for-domain-adaptation.pdf}
+}
+
+@ARTICLE{Courty_OTDA,
+  author={N. {Courty} and R. {Flamary} and D. {Tuia} and A. {Rakotomamonjy}},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  title={Optimal Transport for Domain Adaptation},
+  year={2017},
+  volume={39},
+  number={9},
+  pages={1853-1865},}
+
+  @InProceedings{genevay18a,
+    title = 	 {Learning Generative Models with Sinkhorn Divergences},
+    author = 	 {Aude Genevay and Gabriel Peyre and Marco Cuturi},
+    booktitle = 	 {Proceedings of the Twenty-First International Conference on Artificial Intelligence and Statistics},
+    pages = 	 {1608--1617},
+    year = 	 {2018},
+    editor = 	 {Amos Storkey and Fernando Perez-Cruz},
+    volume = 	 {84},
+    series = 	 {Proceedings of Machine Learning Research},
+    address = 	 {Playa Blanca, Lanzarote, Canary Islands},
+    month = 	 {09--11 Apr},
+    publisher = 	 {PMLR},
+    pdf = 	 {http://proceedings.mlr.press/v84/genevay18a/genevay18a.pdf},
+    url = 	 {http://proceedings.mlr.press/v84/genevay18a.html},
+    abstract = 	 {The ability to compare two degenerate probability distributions, that is two distributions supported on low-dimensional manifolds in much higher-dimensional spaces, is a crucial factor in the estimation of generative mod- els.It is therefore no surprise that optimal transport (OT) metrics and their ability to handle measures with non-overlapping sup- ports have emerged as a promising tool. Yet, training generative machines using OT raises formidable computational and statistical challenges, because of (i) the computational bur- den of evaluating OT losses, (ii) their instability and lack of smoothness, (iii) the difficulty to estimate them, as well as their gradients, in high dimension. This paper presents the first tractable method to train large scale generative models using an OT-based loss called Sinkhorn loss which tackles these three issues by relying on two key ideas: (a) entropic smoothing, which turns the original OT loss into a differentiable and more robust quantity that can be computed using Sinkhorn fixed point iterations; (b) algorithmic (automatic) differentiation of these iterations with seam- less GPU execution. Additionally, Entropic smoothing generates a family of losses interpolating between Wasserstein (OT) and Energy distance/Maximum Mean Discrepancy (MMD) losses, thus allowing to find a sweet spot leveraging the geometry of OT on the one hand, and the favorable high-dimensional sample complexity of MMD, which comes with un- biased gradient estimates. The resulting computational architecture complements nicely standard deep network generative models by a stack of extra layers implementing the loss function.}
+  }
+
+
+
+  @InProceedings{arjovsky17a,
+    title = 	 {{W}asserstein Generative Adversarial Networks},
+    author = 	 {Martin Arjovsky and Soumith Chintala and L{\'e}on Bottou},
+    booktitle = 	 {Proceedings of the 34th International Conference on Machine Learning},
+    pages = 	 {214--223},
+    year = 	 {2017},
+    editor = 	 {Doina Precup and Yee Whye Teh},
+    volume = 	 {70},
+    series = 	 {Proceedings of Machine Learning Research},
+    address = 	 {International Convention Centre, Sydney, Australia},
+    month = 	 {06--11 Aug},
+    publisher = 	 {PMLR},
+    pdf = 	 {http://proceedings.mlr.press/v70/arjovsky17a/arjovsky17a.pdf},
+    url = 	 {http://proceedings.mlr.press/v70/arjovsky17a.html},
+    abstract = 	 {We introduce a new algorithm named WGAN, an alternative to traditional GAN training. In this new model, we show that we can improve the stability of learning, get rid of problems like mode collapse, and provide meaningful learning curves useful for debugging and hyperparameter searches. Furthermore, we show that the corresponding optimization problem is sound, and provide extensive theoretical work highlighting the deep connections to different distances between distributions.}
+  }
+
+
+  @InProceedings{Zhang_2017,
+    Title                    = {Understanding deep learning requires rethinking generalization},
+    Author                   = {C. Zhang and S. Bengio and M. Hardt and B. Recht and O. Vinyals},
+    Year                     = {2017},
+    booktitle={The International Conference on Learning Representations},
+  }
+
+
+  @article{Carratino2020,
+  title={On Mixup Regularization},
+  author={Luigi Carratino and Moustapha Cisse and Rodolphe Jenatton and Jean-Philippe Vert},
+  journal={ArXiv},
+  year={2020},
+  volume={abs/2006.06049}
+}
+
+@inproceedings{wang2019symmetric,
+  title={Symmetric cross entropy for robust learning with noisy labels},
+  author={Wang, Yisen and Ma, Xingjun and Chen, Zaiyi and Luo, Yuan and Yi, Jinfeng and Bailey, James},
+  booktitle={IEEE International Conference on Computer Vision},
+  year={2019}
+}
+
+
+@incollection{goodfellow_gan,
+title = {Generative Adversarial Nets},
+author = {Goodfellow, Ian and Pouget-Abadie, Jean and Mirza, Mehdi and Xu, Bing and Warde-Farley, David and Ozair, Sherjil and Courville, Aaron and Bengio, Yoshua},
+booktitle = {Advances in Neural Information Processing Systems 27},
+editor = {Z. Ghahramani and M. Welling and C. Cortes and N. D. Lawrence and K. Q. Weinberger},
+pages = {2672--2680},
+year = {2014},
+publisher = {Curran Associates, Inc.},
+url = {http://papers.nips.cc/paper/5423-generative-adversarial-nets.pdf}
+}
+
+@incollection{frogner_2015,
+title = {Learning with a Wasserstein Loss},
+author = {Frogner, Charlie and Zhang, Chiyuan and Mobahi, Hossein and Araya, Mauricio and Poggio, Tomaso A},
+booktitle = {Advances in Neural Information Processing Systems 28},
+editor = {C. Cortes and N. D. Lawrence and D. D. Lee and M. Sugiyama and R. Garnett},
+pages = {2053--2061},
+year = {2015},
+publisher = {Curran Associates, Inc.},
+url = {http://papers.nips.cc/paper/5679-learning-with-a-wasserstein-loss.pdf}
+}
+
+@InProceedings{wong19a,
+  title = 	 {{W}asserstein Adversarial Examples via Projected {S}inkhorn Iterations},
+  author = 	 {Wong, Eric and Schmidt, Frank and Kolter, Zico},
+  booktitle = 	 {Proceedings of the 36th International Conference on Machine Learning},
+  pages = 	 {6808--6817},
+  year = 	 {2019},
+  editor = 	 {Chaudhuri, Kamalika and Salakhutdinov, Ruslan},
+  volume = 	 {97},
+  series = 	 {Proceedings of Machine Learning Research},
+  address = 	 {Long Beach, California, USA},
+  month = 	 {09--15 Jun},
+  publisher = 	 {PMLR},
+  pdf = 	 {http://proceedings.mlr.press/v97/wong19a/wong19a.pdf},
+  url = 	 {http://proceedings.mlr.press/v97/wong19a.html},
+  abstract = 	 {A rapidly growing area of work has studied the existence of adversarial examples, datapoints which have been perturbed to fool a classifier, but the vast majority of these works have focused primarily on threat models defined by $\ell_p$ norm-bounded perturbations. In this paper, we propose a new threat model for adversarial attacks based on the Wasserstein distance. In the image classification setting, such distances measure the cost of moving pixel mass, which can naturally represent “standard” image manipulations such as scaling, rotation, translation, and distortion (and can potentially be applied to other settings as well). To generate Wasserstein adversarial examples, we develop a procedure for approximate projection onto the Wasserstein ball, based upon a modified version of the Sinkhorn iteration. The resulting algorithm can successfully attack image classification models, bringing traditional CIFAR10 models down to 3% accuracy within a Wasserstein ball with radius 0.1 (i.e., moving 10% of the image mass 1 pixel), and we demonstrate that PGD-based adversarial training can improve this adversarial accuracy to 76%. In total, this work opens up a new direction of study in adversarial robustness, more formally considering convex metrics that accurately capture the invariances that we typically believe should exist in classifiers, and code for all experiments in the paper is available at https://github.com/locuslab/projected_sinkhorn.}
+}
+
+
+@article{weed2019,
+author = "Weed, Jonathan and Bach, Francis",
+fjournal = "Bernoulli",
+journal = "Bernoulli",
+title = "Sharp asymptotic and finite-sample rates of convergence of empirical measures in Wasserstein distance",
+year = "2019"
+}
+
+@InProceedings{paty19a, title = {Subspace Robust {W}asserstein Distances}, author = {Paty, Fran{\c{c}}ois-Pierre and Cuturi, Marco}, pages = {5072--5081}, year = {2019}, editor = {Kamalika Chaudhuri and Ruslan Salakhutdinov}, volume = {97}, series = {Proceedings of Machine Learning Research}, address = {Long Beach, California, USA}, month = {09--15 Jun}, publisher = {PMLR}, pdf = {http://proceedings.mlr.press/v97/paty19a/paty19a.pdf}, url = {http://proceedings.mlr.press/v97/paty19a.html}, abstract = {Making sense of Wasserstein distances between discrete measures in high-dimensional settings remains a challenge. Recent work has advocated a two-step approach to improve robustness and facilitate the computation of optimal transport, using for instance projections on random real lines, or a preliminary quantization of the measures to reduce the size of their support. We propose in this work a “max-min” robust variant of the Wasserstein distance by considering the maximal possible distance that can be realized between two measures, assuming they can be projected orthogonally on a lower k-dimensional subspace. Alternatively, we show that the corresponding “min-max” OT problem has a tight convex relaxation which can be cast as that of finding an optimal transport plan with a low transportation cost, where the cost is alternatively defined as the sum of the k largest eigenvalues of the second order moment matrix of the displacements (or matchings) corresponding to that plan (the usual OT definition only considers the trace of that matrix). We show that both quantities inherit several favorable properties from the OT geometry. We propose two algorithms to compute the latter formulation using entropic regularization, and illustrate the interest of this approach empirically.} }
+
+
+@InProceedings{genevay19,
+  title = 	 {Sample Complexity of Sinkhorn Divergences},
+  author = 	 {Genevay, Aude and Chizat, L\'{e}na\"{i}c and Bach, Francis and Cuturi, Marco and Peyr\'{e}, Gabriel},
+  booktitle = 	 {Proceedings of Machine Learning Research},
+  pages = 	 {1574--1583},
+  year = 	 {2019},
+  editor = 	 {Chaudhuri, Kamalika and Sugiyama, Masashi},
+  volume = 	 {89},
+  series = 	 {Proceedings of Machine Learning Research},
+  address = 	 {},
+  month = 	 {16--18 Apr},
+  publisher = 	 {PMLR},
+  pdf = 	 {http://proceedings.mlr.press/v89/genevay19a/genevay19a.pdf},
+  url = 	 {http://proceedings.mlr.press/v89/genevay19a.html},
+  abstract = 	 {Optimal transport (OT) and maximum mean discrepancies (MMD) are now routinely used in machine learning to compare probability measures.  We focus in this paper on Sinkhorn divergences (SDs), a regularized variant of OT distances which can interpolate, depending on the regularization strength $\varepsilon$, between OT ($\varepsilon=0$) and MMD ($\varepsilon=\infty$). Although the tradeoff induced by that regularization is now well understood computationally (OT, SDs and MMD require respectively $O(n^3\log n)$, $O(n^2)$ and $n^2$ operations given a sample size $n$), much less is known in terms of their sample complexity, namely the gap between these quantities, when evaluated using finite samples vs. their respective densities. Indeed, while the sample complexity of OT and MMD stand at two extremes, $1/n^{1/d}$ for OT in dimension $d$ and $1/\sqrt{n}$ for MMD, that for SDs has only been studied empirically. In this paper, we (i) derive a bound on the approximation error made with SDs when approximating OT as a function of the regularizer $\varepsilon$, (ii) prove that the optimizers of regularized OT are bounded in a Sobolev (RKHS) ball independent of the two measures and (iii) provide the first sample complexity bound for SDs, obtained,by reformulating SDs as a maximization problem in a RKHS. We thus obtain a scaling in $1/\sqrt{n}$ (as in MMD), with a constant that depends however on $\varepsilon$, making the bridge between OT and MMD complete.}
+}
+
+@InCollection{CuturiSinkhorn,
+  Title                    = {Sinkhorn Distances: Lightspeed Computation of Optimal Transport},
+  Author                   = {Cuturi, Marco},
+  Booktitle                = {Advances in Neural Information Processing Systems 26},
+  Publisher                = {Curran Associates, Inc.},
+  Year                     = {2013},
+  Editor                   = {C. J. C. Burges and L. Bottou and M. Welling and Z. Ghahramani and K. Q. Weinberger},
+  Pages                    = {2292--2300},
+
+  Url                      = {http://papers.nips.cc/paper/4927-sinkhorn-distances-lightspeed-computation-of-optimal-transport.pdf}
+}
+
+@inproceedings{zhong2020random,
+  title={Random Erasing Data Augmentation.},
+  author={Zhong, Zhun and Zheng, Liang and Kang, Guoliang and Li, Shaozi and Yang, Yi},
+  booktitle={AAAI},
+  pages={13001--13008},
+  year={2020}
+}
+
+
+@INPROCEEDINGS{Scholkopf1996,
+    author = {Bernhard Schölkopf and Chris Burges and Vladimir Vapnik},
+    title = {Incorporating Invariances in Support Vector Learning Machines},
+    booktitle = {},
+    year = {1996},
+    pages = {47--52},
+    publisher = {Springer}
+}
+
+@article{Sietsma1991,
+title = "Creating artificial neural networks that generalize",
+journal = "Neural Networks",
+volume = "4",
+number = "1",
+pages = "67 - 79",
+year = "1991",
+issn = "0893-6080",
+doi = "https://doi.org/10.1016/0893-6080(91)90033-2",
+url = "http://www.sciencedirect.com/science/article/pii/0893608091900332",
+author = "Jocelyn Sietsma and Robert J.F. Dow",
+keywords = "Neural Networks, Back-propagation, Pattern recognition, Generalization, Hidden units, Pruning",
+abstract = "We develop a technique to test the hypothesis that multilayered, feed-forward networks with few units on the first hidden layer generalize better than networks with many units in the first layer. Large networks are trained to perform a classification task and the redundant units are removed (“pruning”) to produce the smallest network capable of performing the task. A technique for inserting layers where pruning has introduced linear inseparability is also described. Two tests of ability to generalize are used—the ability to classify training inputs corrupted by noise and the ability to classify new patterns from each class. The hypothesis is found to be false for networks trained with noisy inputs. Pruning to the minimum number of units in the first layer produces networks which correctly classify the training set but generalize poorly compared with larger networks."
+}
+
+@article{decoste2002,
+  title={Training invariant support vector machines},
+  author={Decoste, Dennis and Sch{\"o}lkopf, Bernhard},
+  journal={Machine learning},
+  volume={46},
+  number={1-3},
+  pages={161--190},
+  year={2002},
+  publisher={Springer}
+}
+
+@incollection{Berthelot2019,
+title = {MixMatch: A Holistic Approach to Semi-Supervised Learning},
+author = {Berthelot, David and Carlini, Nicholas and Goodfellow, Ian and Papernot, Nicolas and Oliver, Avital and Raffel, Colin A},
+booktitle = {Advances in Neural Information Processing Systems 32},
+editor = {H. Wallach and H. Larochelle and A. Beygelzimer and F. d\textquotesingle Alch\'{e}-Buc and E. Fox and R. Garnett},
+pages = {5049--5059},
+year = {2019},
+publisher = {Curran Associates, Inc.},
+url = {http://papers.nips.cc/paper/8749-mixmatch-a-holistic-approach-to-semi-supervised-learning.pdf}
+}
+
+@inproceedings{Li2020DivideMix,
+title={DivideMix: Learning with Noisy Labels as Semi-supervised Learning},
+author={Junnan Li and Richard Socher and Steven C.H. Hoi},
+booktitle={International Conference on Learning Representations},
+year={2020},
+url={https://openreview.net/forum?id=HJgExaVtwr}
+}
+
+
+@incollection{Dosovitskiy2014,
+title = {Discriminative Unsupervised Feature Learning with Convolutional Neural Networks},
+author = {Dosovitskiy, Alexey and Springenberg, Jost Tobias and Riedmiller, Martin and Brox, Thomas},
+booktitle = {Advances in Neural Information Processing Systems 27},
+editor = {Z. Ghahramani and M. Welling and C. Cortes and N. D. Lawrence and K. Q. Weinberger},
+pages = {766--774},
+year = {2014},
+publisher = {Curran Associates, Inc.},
+url = {http://papers.nips.cc/paper/5548-discriminative-unsupervised-feature-learning-with-convolutional-neural-networks.pdf}
+}
+
+@article{cirecsan2010,
+  title={Deep, big, simple neural nets for handwritten digit recognition},
+  author={Cire{\c{s}}an, Dan Claudiu and Meier, Ueli and Gambardella, Luca Maria and Schmidhuber, J{\"u}rgen},
+  journal={Neural computation},
+  volume={22},
+  number={12},
+  pages={3207--3220},
+  year={2010},
+  publisher={MIT Press}
+}
+
+
+@article{DANN,
+  author  = {Yaroslav Ganin and Evgeniya Ustinova and Hana Ajakan and Pascal Germain and Hugo Larochelle and Fran{\c{c}}ois Laviolette and Mario March and Victor Lempitsky},
+  title   = {Domain-Adversarial Training of Neural Networks},
+  journal = {Journal of Machine Learning Research},
+  year    = {2016},
+  volume  = {17},
+  number  = {59},
+  pages   = {1-35},
+}
+
+@inproceedings{cdan2018,
+  title={Conditional adversarial domain adaptation},
+  author={Long, Mingsheng and Cao, Zhangjie and Wang, Jianmin and Jordan, Michael I},
+  booktitle={Advances in Neural Information Processing Systems},
+  pages={1645--1655},
+  year={2018}
+}
+
+@article{alda2020,
+    title={Adversarial-Learned Loss for Domain Adaptation},
+    author={Minghao Chen and Shuai Zhao and Haifeng Liu and Deng Cai},
+    journal={arXiv},
+    year={2020},
+    volume={abs/2001.01046}
+}
+
+@InProceedings{fatras21a,
+title = 	 {Unbalanced minibatch Optimal Transport; applications to Domain Adaptation},
+author =       {Fatras, Kilian and Sejourne, Thibault and Flamary, R{\'e}mi and Courty, Nicolas},
+booktitle = 	 {Proceedings of the 38th International Conference on Machine Learning},
+pages = 	 {3186--3197},
+year = 	 {2021},
+editor = 	 {Meila, Marina and Zhang, Tong},
+volume = 	 {139},
+series = 	 {Proceedings of Machine Learning Research},
+month = 	 {18--24 Jul},
+publisher =    {PMLR},
+pdf = 	 {http://proceedings.mlr.press/v139/fatras21a/fatras21a.pdf},
+url = 	 {http://proceedings.mlr.press/v139/fatras21a.html},
+abstract = 	 {Optimal transport distances have found many applications in machine learning for their capacity to compare non-parametric probability distributions. Yet their algorithmic complexity generally prevents their direct use on large scale datasets. Among the possible strategies to alleviate this issue, practitioners can rely on computing estimates of these distances over subsets of data, i.e. minibatches. While computationally appealing, we highlight in this paper some limits of this strategy, arguing it can lead to undesirable smoothing effects. As an alternative, we suggest that the same minibatch strategy coupled with unbalanced optimal transport can yield more robust behaviors. We discuss the associated theoretical properties, such as unbiased estimators, existence of gradients and concentration bounds. Our experimental study shows that in challenging problems associated to domain adaptation, the use of unbalanced optimal transport leads to significantly better results, competing with or surpassing recent baselines.}
+}  
+
+@Article{COT_Peyre,
+  Title                    = {Computational Optimal Transport},
+  Author                   = {Gabriel Peyré and Marco Cuturi},
+  Journal                  = {Foundations and Trends® in Machine Learning},
+  Year                     = {2019},
+}
+
+@inproceedings{redko2017,
+  TITLE = {{Theoretical Analysis of Domain Adaptation with Optimal Transport}},
+  AUTHOR = {Redko, Ievgen and Habrard, Amaury and Sebban, Marc},
+  URL = {https://hal.archives-ouvertes.fr/hal-01613564},
+  BOOKTITLE = {{ECML PKDD 2017}},
+  ADDRESS = {Skopje, Macedonia},
+  YEAR = {2017},
+  MONTH = Sep,
+  KEYWORDS = {domain adaptation ; generalization bounds ; optimal transport},
+  PDF = {https://hal.archives-ouvertes.fr/hal-01613564/file/paperID194.pdf},
+  HAL_ID = {hal-01613564},
+  HAL_VERSION = {v1},
+}
+
+@InProceedings{Saenko2010,
+author="Saenko, Kate
+and Kulis, Brian
+and Fritz, Mario
+and Darrell, Trevor",
+editor="Daniilidis, Kostas
+and Maragos, Petros
+and Paragios, Nikos",
+title="Adapting Visual Category Models to New Domains",
+booktitle="Computer Vision -- ECCV 2010",
+year="2010",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="213--226",
+abstract="Domain adaptation is an important emerging topic in computer vision. In this paper, we present one of the first studies of domain shift in the context of object recognition. We introduce a method that adapts object models acquired in a particular visual domain to new imaging conditions by learning a transformation that minimizes the effect of domain-induced changes in the feature distribution. The transformation is learned in a supervised manner and can be applied to categories for which there are no labeled examples in the new domain. While we focus our evaluation on object recognition tasks, the transform-based adaptation technique we develop is general and could be applied to non-image data. Another contribution is a new multi-domain object database, freely available for download. We experimentally demonstrate the ability of our method to improve recognition on categories with few or no target domain labels and moderate to large changes in the imaging conditions.",
+isbn="978-3-642-15561-1"
+}
+
+
+
+@ARTICLE{Pan2010,
+  author={Pan, Sinno Jialin and Yang, Qiang},
+  journal={IEEE Transactions on Knowledge and Data Engineering}, 
+  title={A Survey on Transfer Learning}, 
+  year={2010},
+  volume={22},
+  number={10},
+  pages={1345-1359},
+  doi={10.1109/TKDE.2009.191}}
+  
+@InProceedings{Ghifary2016,
+author="Ghifary, Muhammad
+and Kleijn, W. Bastiaan
+and Zhang, Mengjie
+and Balduzzi, David
+and Li, Wen",
+editor="Leibe, Bastian
+and Matas, Jiri
+and Sebe, Nicu
+and Welling, Max",
+title="Deep Reconstruction-Classification Networks for Unsupervised Domain Adaptation",
+booktitle="Computer Vision -- ECCV 2016",
+year="2016",
+publisher="Springer International Publishing",
+address="Cham",
+pages="597--613",
+abstract="In this paper, we propose a novel unsupervised domain adaptation algorithm based on deep learning for visual object recognition. Specifically, we design a new model called Deep Reconstruction-Classification Network (DRCN), which jointly learns a shared encoding representation for two tasks: (i) supervised classification of labeled source data, and (ii) unsupervised reconstruction of unlabeled target data. In this way, the learnt representation not only preserves discriminability, but also encodes useful information from the target domain. Our new DRCN model can be optimized by using backpropagation similarly as the standard neural networks.",
+isbn="978-3-319-46493-0"
+}
+
+
+@InProceedings{long15,
+  title = 	 {Learning Transferable Features with Deep Adaptation Networks},
+  author = 	 {Long, Mingsheng and Cao, Yue and Wang, Jianmin and Jordan, Michael},
+  booktitle = 	 {Proceedings of the 32nd International Conference on Machine Learning},
+  pages = 	 {97--105},
+  year = 	 {2015},
+  editor = 	 {Bach, Francis and Blei, David},
+  volume = 	 {37},
+  series = 	 {Proceedings of Machine Learning Research},
+  address = 	 {Lille, France},
+  month = 	 {07--09 Jul},
+  publisher =    {PMLR},
+  pdf = 	 {http://proceedings.mlr.press/v37/long15.pdf},
+  url = 	 {https://proceedings.mlr.press/v37/long15.html},
+  abstract = 	 {Recent studies reveal that a deep neural network can learn transferable features which generalize well to novel tasks for domain adaptation. However, as deep features eventually transition from general to specific along the network, the feature transferability drops significantly in higher layers with increasing domain discrepancy. Hence, it is important to formally reduce the dataset bias and enhance the transferability in task-specific layers. In this paper, we propose a new Deep Adaptation Network (DAN) architecture, which generalizes deep convolutional neural network to the domain adaptation scenario. In DAN, hidden representations of all task-specific layers are embedded in a reproducing kernel Hilbert space where the mean embeddings of different domain distributions can be explicitly matched. The domain discrepancy is further reduced using an optimal multi-kernel selection method for mean embedding matching. DAN can learn transferable features with statistical guarantees, and can scale linearly by unbiased estimate of kernel embedding. Extensive empirical evidence shows that the proposed architecture yields state-of-the-art image classification error rates on standard domain adaptation benchmarks.}
+}
+
+
+
+@InProceedings{long17a,
+  title = 	 {Deep Transfer Learning with Joint Adaptation Networks},
+  author =       {Mingsheng Long and Han Zhu and Jianmin Wang and Michael I. Jordan},
+  booktitle = 	 {Proceedings of the 34th International Conference on Machine Learning},
+  pages = 	 {2208--2217},
+  year = 	 {2017},
+  editor = 	 {Precup, Doina and Teh, Yee Whye},
+  volume = 	 {70},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {06--11 Aug},
+  publisher =    {PMLR},
+  pdf = 	 {http://proceedings.mlr.press/v70/long17a/long17a.pdf},
+  url = 	 {https://proceedings.mlr.press/v70/long17a.html},
+  abstract = 	 {Deep networks have been successfully applied to learn transferable features for adapting models from a source domain to a different target domain. In this paper, we present joint adaptation networks (JAN), which learn a transfer network by aligning the joint distributions of multiple domain-specific layers across domains based on a joint maximum mean discrepancy (JMMD) criterion. Adversarial training strategy is adopted to maximize JMMD such that the distributions of the source and target domains are made more distinguishable. Learning can be performed by stochastic gradient descent with the gradients computed by back-propagation in linear-time. Experiments testify that our model yields state of the art results on standard datasets.}
+}
+
+@misc{mao2019virtual,
+      title={Virtual Mixup Training for Unsupervised Domain Adaptation}, 
+      author={Xudong Mao and Yun Ma and Zhenguo Yang and Yangbin Chen and Qing Li},
+      year={2019},
+      eprint={1905.04215},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+
+@misc{shu2018dirtt,
+      title={A DIRT-T Approach to Unsupervised Domain Adaptation}, 
+      author={Rui Shu and Hung H. Bui and Hirokazu Narui and Stefano Ermon},
+      year={2018},
+      eprint={1802.08735},
+      archivePrefix={arXiv},
+      primaryClass={stat.ML}
+}
+
+@ARTICLE{Fatras2021WAR,
+author={Fatras, Kilian and Damodaran, Bharath Bhushan and Lobry, Sylvain and Flamary, Remi and Tuia, Devis and Courty, Nicolas},
+journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+title={Wasserstein Adversarial Regularization for learning with label noise}, 
+year={2021},
+doi={10.1109/TPAMI.2021.3094662}}
+
+@misc{salimans2018improving,
+      title={Improving GANs Using Optimal Transport}, 
+      author={Tim Salimans and Han Zhang and Alec Radford and Dimitris Metaxas},
+      year={2018},
+      eprint={1803.05573},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
+
+@article{MNIST,
+  added-at = {2010-06-28T21:16:30.000+0200},
+  author = {LeCun, Yann and Cortes, Corinna},
+  biburl = {https://www.bibsonomy.org/bibtex/2935bad99fa1f65e03c25b315aa3c1032/mhwombat},
+  groups = {public},
+  howpublished = {http://yann.lecun.com/exdb/mnist/},
+  interhash = {21b9d0558bd66279df9452562df6e6f3},
+  intrahash = {935bad99fa1f65e03c25b315aa3c1032},
+  keywords = {MSc _checked character_recognition mnist network neural},
+  lastchecked = {2016-01-14 14:24:11},
+  timestamp = {2016-07-12T19:25:30.000+0200},
+  title = {{MNIST} handwritten digit database},
+  username = {mhwombat},
+  year = 2010
+}
+
+
+@article{USPS,
+author = {Hull, Jonathan},
+year = {1994},
+title = {Database for handwritten text recognition research},
+volume = {16},
+journal = {Pattern Analysis and Machine Intelligence, IEEE Transactions on},
+doi = {10.1109/34.291440}
+}
+
+@inproceedings{svhn,
+title	= {Reading Digits in Natural Images with Unsupervised Feature Learning},
+author	= {Yuval Netzer and Tao Wang and Adam Coates and Alessandro Bissacco and Bo Wu and Andrew Y. Ng},
+year	= {2011},
+booktitle	= {NIPS Workshop on Deep Learning and Unsupervised Feature Learning 2011}
+}
+
+@inproceedings{office_home,
+	title={Deep Hashing Network for Unsupervised Domain Adaptation},
+	author={Venkateswara, Hemanth and Eusebio, Jose and Chakraborty, Shayok and Panchanathan, Sethuraman},
+	booktitle={({IEEE}) Conference on Computer Vision and Pattern Recognition ({CVPR})},
+	year={2017}
+}
+
+
+@article{visda,
+  author    = {Xingchao Peng and
+               Ben Usman and
+               Neela Kaushik and
+               Judy Hoffman and
+               Dequan Wang and
+               Kate Saenko},
+  title     = {VisDA: The Visual Domain Adaptation Challenge},
+  journal   = {CoRR},
+  volume    = {abs/1710.06924},
+  year      = {2017},
+}
+
+
+@InProceedings{redko19a,
+  title = 	 {Optimal Transport for Multi-source Domain Adaptation under Target Shift},
+  author =       {Redko, Ievgen and Courty, Nicolas and Flamary, R\'emi and Tuia, Devis},
+  booktitle = 	 {Proceedings of the Twenty-Second International Conference on Artificial Intelligence and Statistics},
+  pages = 	 {849--858},
+  year = 	 {2019},
+  editor = 	 {Chaudhuri, Kamalika and Sugiyama, Masashi},
+  volume = 	 {89},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {16--18 Apr},
+  publisher =    {PMLR},
+  pdf = 	 {http://proceedings.mlr.press/v89/redko19a/redko19a.pdf},
+  url = 	 {https://proceedings.mlr.press/v89/redko19a.html},
+  abstract = 	 {In this paper, we tackle the problem of reducing discrepancies between multiple domains, i.e. multi-source domain adaptation, and consider it under the target shift assumption: in all domains we aim to solve a classification problem with the same output classes, but with different labels proportions. This problem, generally ignored in the vast majority of domain adaptation papers, is nevertheless critical in real-world applications, and we theoretically show its impact on the success of the adaptation. Our proposed method is based on optimal transport, a theory that has been successfully used to tackle adaptation problems in machine learning. The introduced approach, Joint Class Proportion and Optimal Transport (JCPOT), performs multi-source adaptation and target shift correction simultaneously by learning the class probabilities of the unlabeled target sample and the coupling allowing to align two (or more) probability distributions. Experiments on both synthetic and real-world data (satellite image pixel classification) task show the superiority of the proposed method over the state-of-the-art.}
+}
+
+@InProceedings{balaji2020robust,
+      title={Robust Optimal Transport with Applications in Generative Modeling and Domain Adaptation},
+      author={Yogesh Balaji and Rama Chellappa and Soheil Feizi},
+      booktitle = {Advances in Neural Information Processing Systems},
+      year={2020},
+}
+
+
+@inproceedings{liang2020baus,
+    title={A Balanced and Uncertainty-aware Approach for Partial Domain Adaptation},
+    author={Liang Jian and Wang Yunbo and Hu Dapeng and He Ran and Feng Jiashi},
+    booktitle={European Conference on Computer Vision (ECCV)},
+    month = {August},
+    year={2020}
+}
+
+@InProceedings{ETN_2019_CVPR,
+author = {Zhangjie Cao and Kaichao You and Mingsheng Long and Jianmin Wang and Qiang Yang},
+title = {Learning to Transfer Examples for Partial Domain Adaptation},
+booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+month = {June},
+year = {2019}
+}
+
+@InProceedings{Cao_2018_ECCV,
+author = {Cao, Zhangjie and Ma, Lijia and Long, Mingsheng and Wang, Jianmin},
+title = {Partial Adversarial Domain Adaptation},
+booktitle = {Proceedings of the European Conference on Computer Vision (ECCV)},
+month = {September},
+year = {2018}
+}
+
+@inproceedings{xu2020adversarial,
+  author    = {Minghao Xu and Jian Zhang and Bingbing Ni and Teng Li and Chengjie Wang and Qi Tian and Wenjun Zhang},
+  title     = {Adversarial Domain Adaptation with Domain Mixup},
+  booktitle = {The Thirty-Fourth AAAI Conference on Artificial Intelligence},
+  pages     = {6502--6509},
+  publisher = {AAAI Press},
+  year      = {2020}
+}
+
+@misc{yang2021deep,
+      title={Deep Co-Training with Task Decomposition for Semi-Supervised Domain Adaptation}, 
+      author={Luyu Yang and Yan Wang and Mingfei Gao and Abhinav Shrivastava and Kilian Q. Weinberger and Wei-Lun Chao and Ser-Nam Lim},
+      year={2021},
+      eprint={2007.12684},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
+}
+
+@InProceedings{feydy19a,
+  title =    {Interpolating between Optimal Transport and MMD using Sinkhorn Divergences},
+  author =   {Feydy, Jean and S\'{e}journ\'{e}, Thibault and Vialard, Fran\c{c}ois-Xavier and Amari, Shun-ichi and Trouve, Alain and Peyr\'{e}, Gabriel},
+  booktitle =    {Proceedings of Machine Learning Research},
+  year =   {2019},
+}
+
+@inproceedings{gu2021adversarial,
+title={Adversarial Reweighting for Partial Domain Adaptation},
+author={Xiang Gu and Xi Yu and Yan Yang and Jian Sun and Zongben Xu},
+booktitle={Advances in Neural Information Processing Systems},
+editor={A. Beygelzimer and Y. Dauphin and P. Liang and J. Wortman Vaughan},
+year={2021},
+url={https://openreview.net/forum?id=f5liPryFRoA}
+}
+
+@article{Flamary2021,
+author  = {R\'emi Flamary and Nicolas Courty and Alexandre Gramfort and Mokhtar Z. Alaya and Aur\'elie Boisbunon and Stanislas Chambon and Laetitia Chapel and Adrien Corenflos and Kilian Fatras and Nemo Fournier and L\'eo Gautheron and Nathalie T.H. Gayraud and Hicham Janati and Alain Rakotomamonjy and Ievgen Redko and Antoine Rolet and Antony Schutz and Vivien Seguy and Danica J. Sutherland and Romain Tavenard and Alexander Tong and Titouan Vayer},
+title   = {POT: Python Optimal Transport},
+journal = {Journal of Machine Learning Research},
+year    = {2021},
+volume  = {22},
+number  = {78},
+pages   = {1-8},
+url     = {http://jmlr.org/papers/v22/20-451.html}
+}
+
+@article{paszke2017automatic,
+  title={Automatic differentiation in PyTorch},
+  author={Paszke, Adam and Gross, Sam and Chintala, Soumith and Chanan, Gregory and Yang, Edward and DeVito, Zachary and Lin, Zeming and Desmaison, Alban and Antiga, Luca and Lerer, Adam},
+  year={2017}
+}
+
+@article{vandermaaten08a,
+  author  = {Laurens van der Maaten and Geoffrey Hinton},
+  title   = {Visualizing Data using t-SNE},
+  journal = {Journal of Machine Learning Research},
+  year    = {2008},
+  volume  = {9},
+  number  = {86},
+  pages   = {2579-2605},
+  url     = {http://jmlr.org/papers/v9/vandermaaten08a.html}
+}
+
+@article{mbot_Sommerfeld,
+  author  = {Max Sommerfeld and J{{\"o}}rn Schrieber and Yoav Zemel and Axel Munk},
+  title   = {Optimal Transport: Fast Probabilistic Approximation with Exact Solvers},
+  journal = {Journal of Machine Learning Research},
+  year    = {2019},
+}
+
+@inproceedings{zhang2021how,
+title={How Does Mixup Help With Robustness and Generalization?},
+author={Linjun Zhang and Zhun Deng and Kenji Kawaguchi and Amirata Ghorbani and James Zou},
+booktitle={International Conference on Learning Representations},
+year={2021},
+url={https://openreview.net/forum?id=8yKEo06dKNo}
+}
+
+
+@InProceedings{verma19a,
+  title = 	 {Manifold Mixup: Better Representations by Interpolating Hidden States},
+  author =       {Verma, Vikas and Lamb, Alex and Beckham, Christopher and Najafi, Amir and Mitliagkas, Ioannis and Lopez-Paz, David and Bengio, Yoshua},
+  booktitle = 	 {Proceedings of the 36th International Conference on Machine Learning},
+  pages = 	 {6438--6447},
+  year = 	 {2019},
+  editor = 	 {Chaudhuri, Kamalika and Salakhutdinov, Ruslan},
+  volume = 	 {97},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {09--15 Jun},
+  publisher =    {PMLR},
+  pdf = 	 {http://proceedings.mlr.press/v97/verma19a/verma19a.pdf},
+  url = 	 {https://proceedings.mlr.press/v97/verma19a.html},
+  abstract = 	 {Deep neural networks excel at learning the training data, but often provide incorrect and confident predictions when evaluated on slightly different test examples. This includes distribution shifts, outliers, and adversarial examples. To address these issues, we propose \manifoldmixup{}, a simple regularizer that encourages neural networks to predict less confidently on interpolations of hidden representations. \manifoldmixup{} leverages semantic interpolations as additional training signal, obtaining neural networks with smoother decision boundaries at multiple levels of representation. As a result, neural networks trained with \manifoldmixup{} learn flatter class-representations, that is, with fewer directions of variance. We prove theory on why this flattening happens under ideal conditions, validate it empirically on practical situations, and connect it to the previous works on information theory and generalization. In spite of incurring no significant computation and being implemented in a few lines of code, \manifoldmixup{} improves strong baselines in supervised learning, robustness to single-step adversarial attacks, and test log-likelihood.}
+}
+
+
+@INPROCEEDINGS{Busto2017,
+  author={Busto, Pau Panareda and Gall, Juergen},
+  booktitle={2017 IEEE International Conference on Computer Vision (ICCV)}, 
+  title={Open Set Domain Adaptation}, 
+  year={2017},
+  volume={},
+  number={},
+  pages={754-763},
+  doi={10.1109/ICCV.2017.88}}
+
+
+@article{Liero_2017,
+   title={Optimal Entropy-Transport problems and a new Hellinger–Kantorovich distance between positive measures},
+   volume={211},
+   ISSN={1432-1297},
+   DOI={10.1007/s00222-017-0759-8},
+   number={3},
+   journal={Inventiones mathematicae},
+   publisher={Springer Science and Business Media LLC},
+   author={Liero, Matthias and Mielke, Alexander and Savaré, Giuseppe},
+   year={2017},
+   month={Dec},
+   pages={969–1117}
+}
+
+@InProceedings{Xu_2019_ICCV,
+author = {Xu, Ruijia and Li, Guanbin and Yang, Jihan and Lin, Liang},
+title = {Larger Norm More Transferable: An Adaptive Feature Norm Approach for Unsupervised Domain Adaptation},
+booktitle = {The IEEE International Conference on Computer Vision (ICCV)},
+month = {October},
+year = {2019}
+}
+
+@article{Chen2020SelectiveTW,
+  title={Selective Transfer With Reinforced Transfer Network for Partial Domain Adaptation},
+  author={Zhihong Chen and Chao Chen and Zhaowei Cheng and Ke Fang and Xinyu Jin},
+  journal={2020 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year={2020},
+  pages={12703-12711}
+}
+
+@article{Zhang2018ImportanceWA,
+  title={Importance Weighted Adversarial Nets for Partial Domain Adaptation},
+  author={Jing Zhang and Zewei Ding and W. Li and Philip Ogunbona},
+  journal={2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year={2018},
+  pages={8156-8164}
+}
+
+@article{Cao2018PartialTL,
+  title={Partial Transfer Learning with Selective Adversarial Networks},
+  author={Zhangjie Cao and Mingsheng Long and Jianmin Wang and Michael I. Jordan},
+  journal={2018 IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year={2018},
+  pages={2724-2732}
+}
+
+@article{drcn2021,
+   title={Deep Residual Correction Network for Partial Domain Adaptation},
+   volume={43},
+   ISSN={1939-3539},
+   url={http://dx.doi.org/10.1109/TPAMI.2020.2964173},
+   DOI={10.1109/tpami.2020.2964173},
+   number={7},
+   journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+   publisher={Institute of Electrical and Electronics Engineers (IEEE)},
+   author={Li, Shuang and Liu, Chi Harold and Lin, Qiuxia and Wen, Qi and Su, Limin and Huang, Gao and Ding, Zhengming},
+   year={2021},
+   month={Jul},
+   pages={2329–2344} }
+
+
+@article{ChizatPSV18,
+  author    = {Lena{\"{\i}}c Chizat and
+               Gabriel Peyr{\'{e}} and
+               Bernhard Schmitzer and
+               Fran{\c{c}}ois{-}Xavier Vialard},
+  title     = {Scaling algorithms for unbalanced optimal transport problems},
+  journal   = {Math. Comput.},
+  volume    = {87},
+  number    = {314},
+  pages     = {2563--2609},
+  year      = {2018},
+  doi       = {10.1090/mcom/3303},
+  timestamp = {Wed, 08 Aug 2018 15:10:06 +0200},
+}
+
+@INPROCEEDINGS{He2016,
+  author={He, Kaiming and Zhang, Xiangyu and Ren, Shaoqing and Sun, Jian},
+  booktitle={2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}, 
+  title={Deep Residual Learning for Image Recognition}, 
+  year={2016},
+  volume={},
+  number={},
+  pages={770-778},
+  doi={10.1109/CVPR.2016.90}}
+
+
+@ARTICLE{Patel2015,
+  author={Patel, Vishal M and Gopalan, Raghuraman and Li, Ruonan and Chellappa, Rama},
+  journal={IEEE Signal Processing Magazine}, 
+  title={Visual Domain Adaptation: A survey of recent advances}, 
+  year={2015},
+  volume={32},
+  number={3},
+  pages={53-69},
+  doi={10.1109/MSP.2014.2347059}}
+
+@inproceedings{alexnet,
+ author = {Krizhevsky, Alex and Sutskever, Ilya and Hinton, Geoffrey E},
+ booktitle = {Advances in Neural Information Processing Systems},
+ editor = {F. Pereira and C. J. C. Burges and L. Bottou and K. Q. Weinberger},
+ pages = {},
+ publisher = {Curran Associates, Inc.},
+ title = {ImageNet Classification with Deep Convolutional Neural Networks},
+ url = {https://proceedings.neurips.cc/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf},
+ volume = {25},
+ year = {2012}
+}
+
+@article{mukherjee2020outlierrobust,
+      title={Outlier-Robust Optimal Transport},
+      author={Debarghya Mukherjee and Aritra Guha and Justin Solomon and Yuekai Sun and Mikhail Yurochkin},
+      year={2020},
+      eprint={2012.07363},
+      journal   = {CoRR},
+
+}
+
+@article{RobustOptimalTransport2022Nietert,
+      title={Outlier-Robust Optimal Transport: Duality, Structure, and Statistical Analysis},
+      author={Sloan Nietert and Rachel Cummings and Ziv Goldfeld},
+      year={2022},
+      booktitle = {International Conference on Artificial Intelligence and Statistics},
+
+}
+
+
+@InProceedings{staerman21a,
+  title = 	 { When OT meets MoM: Robust estimation of Wasserstein Distance },
+  author =       {Staerman, Guillaume and Laforgue, Pierre and Mozharovskyi, Pavlo and d'Alch{\'e}-Buc, Florence},
+  booktitle = 	 {Proceedings of The 24th International Conference on Artificial Intelligence and Statistics},
+  pages = 	 {136--144},
+  year = 	 {2021},
+  editor = 	 {Banerjee, Arindam and Fukumizu, Kenji},
+  volume = 	 {130},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {13--15 Apr},
+  publisher =    {PMLR},
+  pdf = 	 {http://proceedings.mlr.press/v130/staerman21a/staerman21a.pdf},
+  url = 	 {https://proceedings.mlr.press/v130/staerman21a.html},
+  abstract = 	 { Originated from Optimal Transport, the Wasserstein distance has gained importance in Machine Learning due to its appealing geometrical properties and the increasing availability of efficient approximations. It owes its recent ubiquity in generative modelling and variational inference to its ability to cope with distributions having non overlapping support. In this work, we consider the problem of estimating the Wasserstein distance between two probability distributions when observations are polluted by outliers. To that end, we investigate how to leverage a Medians of Means (MoM) approach to provide robust estimates. Exploiting the dual Kantorovitch formulation of the Wasserstein distance, we introduce and discuss novel MoM-based robust estimators whose consistency is studied under a data contamination model and for which convergence rates are provided. Beyond computational issues, the choice of the partition size, i.e., the unique parameter of theses robust estimators, is investigated in numerical experiments. Furthermore, these MoM estimators make Wasserstein Generative Adversarial Network (WGAN) robust to outliers, as witnessed by an empirical study on two benchmarks CIFAR10 and Fashion MNIST. }
+}
+
+@article{sejourne2019sinkhorn,
+  title={Sinkhorn Divergences for Unbalanced Optimal Transport},
+  author={S{\'e}journ{\'e}, Thibault and Feydy, Jean and Vialard, Fran{\c{c}}ois-Xavier and Trouv{\'e}, Alain and Peyr{\'e}, Gabriel},
+  journal={arXiv preprint arXiv:1910.12958},
+  year={2019}
+}
+
+
+ @InProceedings{pham20a,
+ title = {On Unbalanced Optimal Transport: An Analysis of {S}inkhorn Algorithm},
+ author = {Pham, Khiem and Le, Khang and Ho, Nhat and Pham, Tung and Bui, Hung},
+ booktitle = {Proceedings of the 37th International Conference on Machine Learning},
+ pages = {7673--7682},
+ year = {2020},
+ editor = {Hal Daumé III and Aarti Singh},
+ volume = {119},
+ series = {Proceedings of Machine Learning Research},
+ month = {13--18 Jul},
+ publisher = {PMLR},
+ }
+ 
+ @article{figalli_partial,
+author = {Figalli, Alessio},
+year = {2010},
+month = {02},
+pages = {533-560},
+title = {The Optimal Partial Transport Problem},
+volume = {195},
+journal = {Archive for Rational Mechanics and Analysis},
+}
+
+@article{figalli2010new,
+  title={A new transportation distance between non-negative measures, with applications to gradients flows with Dirichlet boundary conditions},
+  author={Figalli, Alessio and Gigli, Nicola},
+  journal={Journal de math{\'e}matiques pures et appliqu{\'e}es},
+  volume={94},
+  number={2},
+  pages={107--130},
+  year={2010},
+  publisher={Elsevier}
+}
+
+@InProceedings{chapel2020partial,
+      title={Partial Optimal Transport with Applications on Positive-Unlabeled Learning},
+      author={Laetitia Chapel and Mokhtar Z. Alaya and Gilles Gasso},
+      year={2020},
+      booktitle = {Advances in Neural Information Processing Systems},
+
+}
+
+@article{nath2020unbalanced,
+      title={Unbalanced Optimal Transport using Integral Probability Metric Regularization},
+      author={J. Saketha Nath},
+      year={2020},
+      journal   = {CoRR},
+}
+
+@inproceedings{Hanin1992,
+  title={Kantorovich-Rubinstein norm and its application in the theory of Lipschitz spaces},
+  author={L. Hanin},
+  year={1992}
+}
+
+@misc{piccoli2014,
+      title={On properties of the Generalized Wasserstein distance},
+      author={Benedetto Piccoli and Francesco Rossi},
+      year={2014},
+      journal={ArXiv},
+}
+
+
+@ARTICLE{Miyato2019,
+  author={Miyato, Takeru and Maeda, Shin-Ichi and Koyama, Masanori and Ishii, Shin},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
+  title={Virtual Adversarial Training: A Regularization Method for Supervised and Semi-Supervised Learning}, 
+  year={2019},
+  volume={41},
+  number={8},
+  pages={1979-1993},
+  doi={10.1109/TPAMI.2018.2858821}}
+
+
+@InProceedings{Goodfellow2015,
+  Title                    = {Explaining and Harnessing Adversarial Examples},
+  Author                   = {I. Goodfellow and J. Shlens and C. Szegedy},
+  Booktitle                = {The International Conference on Learning Representations},
+  Year                     = {2015},
+}
+
+
+
+@Article{Navarro2021,
+  author={P. Navarro-Esteban and J. A. Cuesta-Albertos},
+  title={{High-dimensional outlier detection using random projections}},
+  journal={TEST: An Official Journal of the Spanish Society of Statistics and Operations Research},
+  year=2021,
+  volume={30},
+  number={4},
+  pages={908-934},
+  month={December},
+  keywords={Outlier detection; Multivariate data; High-dimensional data; Random projections; Sequential analysis},
+  doi={10.1007/s11749-020-00750-},
+  abstract={ There exist multiple methods to detect outliers in multivariate data in the literature, but most of them require to estimate the covariance matrix. The higher the dimension, the more complex the estimation of the matrix becoming impossible in high dimensions. In order to avoid estimating this matrix, we propose a novel random projection-based procedure to detect outliers in Gaussian multivariate data. It consists in projecting the data in several one-dimensional subspaces where an appropriate univariate outlier detection method, similar to Tukey’s method but with a threshold depending on the initial dimension and the sample size, is applied. The required number of projections is determined using sequential analysis. Simulated and real datasets illustrate the performance of the proposed method.},
+  url={https://ideas.repec.org/a/spr/testjl/v30y2021i4d10.1007_s11749-020-00750-y.html}
+}
+
+@book{Aggarwal2017,
+author = {Aggarwal, Charu C.}, title = {Outlier Analysis}, year = {2016}, isbn = {3319475770}, publisher = {Springer Publishing Company, Incorporated}, edition = {2nd}, abstract = {This book provides comprehensive coverage of the field of outlier analysis from a computer science point of view. It integrates methods from data mining, machine learning, and statistics within the computational framework and therefore appeals to multiple communities. The chapters of this book can be organized into three categories:Basic algorithms: Chapters 1 through 7 discuss the fundamental algorithms for outlier analysis, including probabilistic and statistical methods, linear methods, proximity-based methods, high-dimensional (subspace) methods, ensemble methods, and supervised methods. Domain-specific methods: Chapters 8 through 12 discuss outlier detection algorithms for various domains of data, such as text, categorical data, time-series data, discrete sequence data, spatial data, and network data. Applications: Chapter 13 is devoted to various applications of outlier analysis. Some guidance is also provided for the practitioner. The second edition of this book is more detailed and is written to appeal to both researchers and practitioners. Significant new material has been added on topics such as kernel methods, one-class support-vector machines, matrix factorization, neural networks, outlier ensembles, time-series methods, and subspace methods. It is written as a textbook and can be used for classroom teaching.} }
+
+
+@book{barnett1994outliers,
+  title={Outliers in Statistical Data},
+  author={Barnett, V. and Lewis, T.},
+  isbn={9780471930945},
+  lccn={93029289},
+  series={Wiley Series in Probability and Statistics},
+  url={https://books.google.ca/books?id=B44QAQAAIAAJ},
+  year={1994},
+  publisher={Wiley}
+}
+
+
+@article{Pena2001,
+ ISSN = {00401706},
+ URL = {http://www.jstor.org/stable/1271215},
+ abstract = {In this article, we present a simple multivariate outlier-detection procedure and a robust estimator for the covariance matrix, based on the use of information obtained from projections onto the directions that maximize and minimize the kurtosis coefficient of the projected data. The properties of this estimator (computational cost, bias) are analyzed and compared with those of other robust estimators described in the literature through simulation studies. The performance of the outlier-detection procedure is analyzed by applying it to a set of well-known examples.},
+ author = {Daniel Peña and Francisco J. Prieto},
+ journal = {Technometrics},
+ number = {3},
+ pages = {286--300},
+ publisher = {[Taylor & Francis, Ltd., American Statistical Association, American Society for Quality]},
+ title = {Multivariate Outlier Detection and Robust Covariance Matrix Estimation},
+ volume = {43},
+ year = {2001}
+}
+
+
+@article{Herwindiati2007,
+author = { Dyah E.   Herwindiati  and  Maman A.   Djauhari  and  Muhammad   Mashuri },
+title = {Robust Multivariate Outlier Labeling},
+journal = {Communications in Statistics - Simulation and Computation},
+volume = {36},
+number = {6},
+pages = {1287-1294},
+year  = {2007},
+publisher = {Taylor & Francis},
+doi = {10.1080/03610910701569044},
+URL = { 
+        https://doi.org/10.1080/03610910701569044
+},
+eprint = { 
+        https://doi.org/10.1080/03610910701569044
+}
+}
+
+
+@article{Friedman1987,
+ ISSN = {01621459},
+ URL = {http://www.jstor.org/stable/2289161},
+ abstract = {A new projection pursuit algorithm for exploring multivariate data is presented that has both statistical and computational advantages over previous methods. A number of practical issues concerning its application are addressed. A connection to multivariate density estimation is established, and its properties are investigated through simulation studies and application to real data. The goal of exploratory projection pursuit is to use the data to find low- (one-, two-, or three-) dimensional projections that provide the most revealing views of the full-dimensional data. With these views the human gift for pattern recognition can be applied to help discover effects that may not have been anticipated in advance. Since linear effects are directly captured by the covariance structure of the variable pairs (which are straightforward to estimate) the emphasis here is on the discovery of nonlinear effects such as clustering or other general nonlinear associations among the variables. Although arbitrary nonlinear effects are impossible to parameterize in full generality, they are easily recognized when presented in a low-dimensional visual representation of the data density. Projection pursuit assigns a numerical index to every projection that is a functional of the projected data density. The intent of this index is to capture the degree of nonlinear structuring present in the projected distribution. The pursuit consists of maximizing this index with respect to the parameters defining the projection. Since it is unlikely that there is only one interesting view of a multivariate data set, this procedure is iterated to find further revealing projections. After each maximizing projection has been found, a transformation is applied to the data that removes the structure present in the solution projection while preserving the multivariate structure that is not captured by it. The projection pursuit algorithm is then applied to these transformed data to find additional views that may yield further insight. This projection pursuit algorithm has potential advantages over other dimensionality reduction methods that are commonly used for data exploration. It focuses directly on the "interestingness" of a projection rather than indirectly through the interpoint distances. This allows it to be unaffected by the scale and (linear) correlational structure of the data, helping it to overcome the "curse of dimensionality" that tends to plague methods based on multidimensional scaling, parametric mapping, cluster analysis, and principal components.},
+ author = {Jerome H. Friedman},
+ journal = {Journal of the American Statistical Association},
+ number = {397},
+ pages = {249--266},
+ publisher = {[American Statistical Association, Taylor & Francis, Ltd.]},
+ title = {Exploratory Projection Pursuit},
+ urldate = {2022-04-26},
+ volume = {82},
+ year = {1987}
+}
+
+
+
+@inproceedings{knorr98, 
+author = {Knorr, Edwin M. and Ng, Raymond T.}, title = {Algorithms for Mining Distance-Based Outliers in Large Datasets}, year = {1998}, isbn = {1558605665}, publisher = {Morgan Kaufmann Publishers Inc.}, address = {San Francisco, CA, USA}, booktitle = {Proceedings of the 24rd International Conference on Very Large Data Bases}, pages = {392–403}, numpages = {12}, series = {VLDB '98} }
+
+
+@inproceedings{Arning96, 
+author = {Arning, Andreas and Agrawal, Rakesh and Raghavan, Prabhakar}, title = {A Linear Method for Deviation Detection in Large Databases}, year = {1996}, publisher = {AAAI Press}, abstract = {We describe the problem of finding deviations in large data bases. Normally, explicit information outside the data, like integrity constraints or predefined patterns, is used for deviation detection. In contrast, we approach the problem from the inside of the data, using the implicit redundancy of the data.We give a formal description of the problem and present a linear algorithm for detecting deviations. Our solution simulates a mechanism familiar to human beings: after seeing a series of similar data, an element disturbing the series is considered an exception. We also present experimental results from the application of this algorithm on real-life datasets showing its effectiveness.}, booktitle = {Proceedings of the Second International Conference on Knowledge Discovery and Data Mining}, pages = {164–169}, numpages = {6}, keywords = {error, knowledge discovery, deviation, exception, data mining}, location = {Portland, Oregon}, series = {KDD'96} }
+
+
+@article{Breunig2000, 
+author = {Breunig, Markus M. and Kriegel, Hans-Peter and Ng, Raymond T. and Sander, J\"{o}rg}, title = {LOF: Identifying Density-Based Local Outliers}, year = {2000}, issue_date = {June 2000}, publisher = {Association for Computing Machinery}, address = {New York, NY, USA}, volume = {29}, number = {2}, issn = {0163-5808}, url = {https://doi.org/10.1145/335191.335388}, doi = {10.1145/335191.335388}, abstract = {For many KDD applications, such as detecting criminal activities in E-commerce, finding the rare instances or the outliers, can be more interesting than finding the common patterns. Existing work in outlier detection regards being an outlier as a binary property. In this paper, we contend that for many scenarios, it is more meaningful to assign to each object a degree of being an outlier. This degree is called the local outlier factor (LOF) of an object. It is local in that the degree depends on how isolated the object is with respect to the surrounding neighborhood. We give a detailed formal analysis showing that LOF enjoys many desirable properties. Using real-world datasets, we demonstrate that LOF can be used to find outliers which appear to be meaningful, but can otherwise not be identified with existing approaches. Finally, a careful performance evaluation of our algorithm confirms we show that our approach of finding local outliers can be practical.}, journal = {SIGMOD Rec.}, month = {may}, pages = {93–104}, numpages = {12}, keywords = {database mining, outlier detection} }
+
+
+@inproceedings{Aggarwal99, 
+author = {Aggarwal, Charu C. and Wolf, Joel L. and Yu, Philip S. and Procopiuc, Cecilia and Park, Jong Soo}, title = {Fast Algorithms for Projected Clustering}, year = {1999}, isbn = {1581130848}, publisher = {Association for Computing Machinery}, address = {New York, NY, USA}, url = {https://doi.org/10.1145/304182.304188}, doi = {10.1145/304182.304188}, abstract = {The clustering problem is well known in the database literature for its numerous applications in problems such as customer segmentation, classification and trend analysis. Unfortunately, all known algorithms tend to break down in high dimensional spaces because of the inherent sparsity of the points. In such high dimensional spaces not all dimensions may be relevant to a given cluster. One way of handling this is to pick the closely correlated dimensions and find clusters in the corresponding subspace. Traditional feature selection algorithms attempt to achieve this. The weakness of this approach is that in typical high dimensional data mining applications different sets of points may cluster better for different subsets of dimensions. The number of dimensions in each such cluster-specific subspace may also vary. Hence, it may be impossible to find a single small subset of dimensions for all the clusters. We therefore discuss a generalization of the clustering problem, referred to as the projected clustering problem, in which the subsets of dimensions selected are specific to the clusters themselves. We develop an algorithmic framework for solving the projected clustering problem, and test its performance on synthetic data.}, booktitle = {Proceedings of the 1999 ACM SIGMOD International Conference on Management of Data}, pages = {61–72}, numpages = {12}, location = {Philadelphia, Pennsylvania, USA}, series = {SIGMOD '99} }
+
+
+@inproceedings{Aggarwal2000, 
+author = {Aggarwal, Charu C. and Yu, Philip S.}, title = {Finding Generalized Projected Clusters in High Dimensional Spaces}, year = {2000}, isbn = {1581132174}, publisher = {Association for Computing Machinery}, address = {New York, NY, USA}, url = {https://doi.org/10.1145/342009.335383}, doi = {10.1145/342009.335383}, abstract = {High dimensional data has always been a challenge for clustering algorithms because of the inherent sparsity of the points. Recent research results indicate that in high dimensional data, even the concept of proximity or clustering may not be meaningful. We discuss very general techniques for projected clustering which are able to construct clusters in arbitrarily aligned subspaces of lower dimensionality. The subspaces are specific to the clusters themselves. This definition is substantially more general and realistic than currently available techniques which limit the method to only projections from the original set of attributes. The generalized projected clustering technique may also be viewed as a way of trying to redefine clustering for high dimensional applications by searching for hidden subspaces with clusters which are created by inter-attribute correlations. We provide a new concept of using extended cluster feature vectors in order to make the algorithm scalable for very large databases. The running time and space requirements of the algorithm are adjustable, and are likely ta tradeoff with better accuracy.}, booktitle = {Proceedings of the 2000 ACM SIGMOD International Conference on Management of Data}, pages = {70–81}, numpages = {12}, location = {Dallas, Texas, USA}, series = {SIGMOD '00} }
+
+
+@inproceedings{Ester96, 
+author = {Ester, Martin and Kriegel, Hans-Peter and Sander, J\"{o}rg and Xu, Xiaowei}, title = {A Density-Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise}, year = {1996}, publisher = {AAAI Press}, abstract = {Clustering algorithms are attractive for the task of class identification in spatial databases. However, the application to large spatial databases rises the following requirements for clustering algorithms: minimal requirements of domain knowledge to determine the input parameters, discovery of clusters with arbitrary shape and good efficiency on large databases. The well-known clustering algorithms offer no solution to the combination of these requirements. In this paper, we present the new clustering algorithm DBSCAN relying on a density-based notion of clusters which is designed to discover clusters of arbitrary shape. DBSCAN requires only one input parameter and supports the user in determining an appropriate value for it. We performed an experimental evaluation of the effectiveness and efficiency of DBSCAN using synthetic data and real data of the SEQUOIA 2000 benchmark. The results of our experiments demonstrate that (1) DBSCAN is significantly more effective in discovering clusters of arbitrary shape than the well-known algorithm CLAR-ANS, and that (2) DBSCAN outperforms CLARANS by a factor of more than 100 in terms of efficiency.}, booktitle = {Proceedings of the Second International Conference on Knowledge Discovery and Data Mining}, pages = {226–231}, numpages = {6}, keywords = {arbitrary shape of clusters, efficiency on large spatial databases, clustering algorithms, handling nlj4-275oise}, location = {Portland, Oregon}, series = {KDD'96} }
+
+
+@article{Guha98, 
+author = {Guha, Sudipto and Rastogi, Rajeev and Shim, Kyuseok}, title = {CURE: An Efficient Clustering Algorithm for Large Databases}, year = {1998}, issue_date = {June 1998}, publisher = {Association for Computing Machinery}, address = {New York, NY, USA}, volume = {27}, number = {2}, issn = {0163-5808}, url = {https://doi.org/10.1145/276305.276312}, doi = {10.1145/276305.276312}, abstract = {Clustering, in data mining, is useful for discovering groups and identifying interesting distributions in the underlying data. Traditional clustering algorithms either favor clusters with spherical shapes and similar sizes, or are very fragile in the presence of outliers. We propose a new clustering algorithm called CURE that is more robust to outliers, and identifies clusters having non-spherical shapes and wide variances in size. CURE achieves this by representing each cluster by a certain fixed number of points that are generated by selecting well scattered points from the cluster and then shrinking them toward the center of the cluster by a specified fraction. Having more than one representative point per cluster allows CURE to adjust well to the geometry of non-spherical shapes and the shrinking helps to dampen the effects of outliers. To handle large databases, CURE employs a combination of random sampling and partitioning. A random sample drawn from the data set is first partitioned and each partition is partially clustered. The partial clusters are then clustered in a second pass to yield the desired clusters. Our experimental results confirm that the quality of clusters produced by CURE is much better than those found by existing algorithms. Furthermore, they demonstrate that random sampling and partitioning enable CURE to not only outperform existing algorithms but also to scale well for large databases without sacrificing clustering quality.}, journal = {SIGMOD Rec.}, month = {jun}, pages = {73–84}, numpages = {12} }
+
+
+@article{GOLUB2000,
+title = {Eigenvalue computation in the 20th century},
+journal = {Journal of Computational and Applied Mathematics},
+volume = {123},
+number = {1},
+pages = {35-65},
+year = {2000},
+note = {Numerical Analysis 2000. Vol. III: Linear Algebra},
+issn = {0377-0427},
+doi = {https://doi.org/10.1016/S0377-0427(00)00413-1},
+url = {https://www.sciencedirect.com/science/article/pii/S0377042700004131},
+author = {Gene H. Golub and Henk A. {van der Vorst}},
+keywords = {QR, QZ, Lanczos’ method, Arnoldi's method, Jacobi–Davidson, Power iteration, RKS, Jacobi's method, SVD, Perturbation theory},
+abstract = {This paper sketches the main research developments in the area of computational methods for eigenvalue problems during the 20th century. The earliest of such methods dates back to work of Jacobi in the middle of the 19th century. Since computing eigenvalues and vectors is essentially more complicated than solving linear systems, it is not surprising that highly significant developments in this area started with the introduction of electronic computers around 1950. In the early decades of this century, however, important theoretical developments had been made from which computational techniques could grow. Research in this area of numerical linear algebra is very active, since there is a heavy demand for solving complicated problems associated with stability and perturbation analysis for practical applications. For standard problems, powerful tools are available, but there still remain many open problems. It is the intention of this contribution to sketch the main developments of this century, especially as they relate to one another, and to give an impression of the state of the art at the turn of our century.}
+}
+
+
+@InProceedings{liutkus19a,
+  title = 	 {Sliced-{W}asserstein Flows: Nonparametric Generative Modeling via Optimal Transport and Diffusions},
+  author =       {Liutkus, Antoine and Simsekli, Umut and Majewski, Szymon and Durmus, Alain and St{\"o}ter, Fabian-Robert},
+  booktitle = 	 {Proceedings of the 36th International Conference on Machine Learning},
+  pages = 	 {4104--4113},
+  year = 	 {2019},
+  editor = 	 {Chaudhuri, Kamalika and Salakhutdinov, Ruslan},
+  volume = 	 {97},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {09--15 Jun},
+  publisher =    {PMLR},
+  pdf = 	 {http://proceedings.mlr.press/v97/liutkus19a/liutkus19a.pdf},
+  url = 	 {https://proceedings.mlr.press/v97/liutkus19a.html},
+  abstract = 	 {By building upon the recent theory that established the connection between implicit generative modeling (IGM) and optimal transport, in this study, we propose a novel parameter-free algorithm for learning the underlying distributions of complicated datasets and sampling from them. The proposed algorithm is based on a functional optimization problem, which aims at finding a measure that is close to the data distribution as much as possible and also expressive enough for generative modeling purposes. We formulate the problem as a gradient flow in the space of probability measures. The connections between gradient flows and stochastic differential equations let us develop a computationally efficient algorithm for solving the optimization problem. We provide formal theoretical analysis where we prove finite-time error guarantees for the proposed algorithm. To the best of our knowledge, the proposed algorithm is the first nonparametric IGM algorithm with explicit theoretical guarantees. Our experimental results support our theory and show that our algorithm is able to successfully capture the structure of different types of data distributions.}
+}
+
+
+
+@inproceedings{seguy2018large,
+title={Large Scale Optimal Transport and Mapping Estimation},
+author={Vivien Seguy and Bharath Bhushan Damodaran and Remi Flamary and Nicolas Courty and Antoine Rolet and Mathieu Blondel},
+booktitle={International Conference on Learning Representations},
+year={2018},
+url={https://openreview.net/forum?id=B1zlp1bRW},
+}
+
+@inproceedings{liu2015faceattributes,
+  title = {Deep Learning Face Attributes in the Wild},
+  author = {Liu, Ziwei and Luo, Ping and Wang, Xiaogang and Tang, Xiaoou},
+  booktitle = {Proceedings of International Conference on Computer Vision (ICCV)},
+  month = {December},
+  year = {2015} 
+}
+
+@article{CIFAR10,
+title= {CIFAR-10 (Canadian Institute for Advanced Research)},
+journal= {},
+author= {Alex Krizhevsky and Vinod Nair and Geoffrey Hinton},
+year= {},
+url= {http://www.cs.toronto.edu/~kriz/cifar.html},
+abstract= {The CIFAR-10 dataset consists of 60000 32x32 colour images in 10 classes, with 6000 images per class. There are 50000 training images and 10000 test images. 
+
+The dataset is divided into five training batches and one test batch, each with 10000 images. The test batch contains exactly 1000 randomly-selected images from each class. The training batches contain the remaining images in random order, but some training batches may contain more images from one class than another. Between them, the training batches contain exactly 5000 images from each class. },
+keywords= {Dataset},
+}
+
+
+@inproceedings{NIPS2017_dfd7468a,
+ author = {Li, Chun-Liang and Chang, Wei-Cheng and Cheng, Yu and Yang, Yiming and Poczos, Barnabas},
+ booktitle = {Advances in Neural Information Processing Systems},
+ editor = {I. Guyon and U. Von Luxburg and S. Bengio and H. Wallach and R. Fergus and S. Vishwanathan and R. Garnett},
+ pages = {},
+ publisher = {Curran Associates, Inc.},
+ title = {MMD GAN: Towards Deeper Understanding of Moment Matching Network},
+ url = {https://proceedings.neurips.cc/paper/2017/file/dfd7468ac613286cdbb40872c8ef3b06-Paper.pdf},
+ volume = {30},
+ year = {2017}
+}
+
+
+@incollection{Gulrajani2017,
+title = {Improved Training of Wasserstein GANs},
+author = {Gulrajani, Ishaan and Ahmed, Faruk and Arjovsky, Martin and Dumoulin, Vincent and Courville, Aaron C},
+booktitle = {Advances in Neural Information Processing Systems 30},
+year = {2017},
+}
+
+@inproceedings{chapel2021unbalanced,
+  title={Unbalanced Optimal Transport through Non-negative Penalized Linear Regression},
+  author={Chapel, Laetitia and Flamary, R{\'e}mi and Wu, Haoran and F{\'e}votte, C{\'e}dric and Gasso, Gilles},
+  booktitle={Advances in Neural Information Processing Systems 34},
+  year={2021}
+}
+
+
+
+@misc{fashionmnist,
+  abstract = {We present Fashion-MNIST, a new dataset comprising of 28x28 grayscale images
+of 70,000 fashion products from 10 categories, with 7,000 images per category.
+The training set has 60,000 images and the test set has 10,000 images.
+Fashion-MNIST is intended to serve as a direct drop-in replacement for the
+original MNIST dataset for benchmarking machine learning algorithms, as it
+shares the same image size, data format and the structure of training and
+testing splits. The dataset is freely available at
+https://github.com/zalandoresearch/fashion-mnist},
+  added-at = {2021-10-12T06:50:19.000+0200},
+  author = {Xiao, Han and Rasul, Kashif and Vollgraf, Roland},
+  biburl = {https://www.bibsonomy.org/bibtex/2de51af2f6c7d8b0f4cd84a428bb17967/andolab},
+  description = {Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning Algorithms},
+  interhash = {0c81f9a6170118f14703b6796101ce40},
+  intrahash = {de51af2f6c7d8b0f4cd84a428bb17967},
+  keywords = {Fashion-MNIST Image_Classification_Benchmark},
+  note = {cite arxiv:1708.07747Comment: Dataset is freely available at  https://github.com/zalandoresearch/fashion-mnist Benchmark is available at  http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/},
+  timestamp = {2021-10-12T06:50:19.000+0200},
+  title = {Fashion-MNIST: a Novel Image Dataset for Benchmarking Machine Learning
+  Algorithms},
+  url = {http://arxiv.org/abs/1708.07747},
+  year = 2017
+}
+
+
+@inproceedings{NEURIPS2018_a19744e2,
+ author = {Han, Bo and Yao, Quanming and Yu, Xingrui and Niu, Gang and Xu, Miao and Hu, Weihua and Tsang, Ivor and Sugiyama, Masashi},
+ booktitle = {Advances in Neural Information Processing Systems},
+ editor = {S. Bengio and H. Wallach and H. Larochelle and K. Grauman and N. Cesa-Bianchi and R. Garnett},
+ pages = {},
+ publisher = {Curran Associates, Inc.},
+ title = {Co-teaching: Robust training of deep neural networks with extremely noisy labels},
+ url = {https://proceedings.neurips.cc/paper/2018/file/a19744e268754fb0148b017647355b7b-Paper.pdf},
+ volume = {31},
+ year = {2018}
+}
+
+
+
+@article{oneclasssvmoutlierdetect2000, 
+uthor = {Sch\"{o}lkopf, Bernhard and Platt, John C. and Shawe-Taylor, John C. and Smola, Alex J. and Williamson, Robert C.}, title = {Estimating the Support of a High-Dimensional Distribution}, year = {2001}, issue_date = {July 2001}, publisher = {MIT Press}, address = {Cambridge, MA, USA}, volume = {13}, number = {7}, issn = {0899-7667}, url = {https://doi.org/10.1162/089976601750264965}, doi = {10.1162/089976601750264965}, abstract = {Suppose you are given some data set drawn from an underlying probability distribution P and you want to estimate a "simple" subset S of input space such that the probability that a test point drawn from P lies outside of S equals some a priori specified value between 0 and 1. We propose a method to approach this problem by trying to estimate a function f that is positive on S and negative on the complement. The functional form of f is given by a kernel expansion in terms of a potentially small subset of the training data; it is regularized by controlling the length of the weight vector in an associated feature space. The expansion coefficients are found by solving a quadratic programming problem, which we do by carrying out sequential optimization over pairs of input patterns. We also provide a theoretical analysis of the statistical performance of our algorithm. The algorithm is a natural extension of the support vector algorithm to the case of unlabeled data.}, journal = {Neural Comput.}, month = {jul}, pages = {1443–1471}, numpages = {29} }
+
+
+@article{MinimumCovarianceDeterminant1999,
+author = { Peter J.   Rousseeuw  and  Katrien   Van   Driessen },
+title = {A Fast Algorithm for the Minimum Covariance Determinant Estimator},
+journal = {Technometrics},
+volume = {41},
+number = {3},
+pages = {212-223},
+year  = {1999},
+publisher = {Taylor & Francis},
+doi = {10.1080/00401706.1999.10485670},
+URL = { 
+        https://www.tandfonline.com/doi/abs/10.1080/00401706.1999.10485670
+},
+eprint = { 
+        https://www.tandfonline.com/doi/pdf/10.1080/00401706.1999.10485670
+}
+}
+
+@INPROCEEDINGS{Liu2008,
+  author={Liu, Fei Tony and Ting, Kai Ming and Zhou, Zhi-Hua},
+  booktitle={2008 Eighth IEEE International Conference on Data Mining}, 
+  title={Isolation Forest}, 
+  year={2008},
+  volume={},
+  number={},
+  pages={413-422},
+  doi={10.1109/ICDM.2008.17}}
+
+ 
+@article{Pang2021, 
+author = {Pang, Guansong and Shen, Chunhua and Cao, Longbing and Hengel, Anton Van Den}, title = {Deep Learning for Anomaly Detection: A Review}, year = {2021}, issue_date = {March 2022}, publisher = {Association for Computing Machinery}, address = {New York, NY, USA}, volume = {54}, number = {2}, issn = {0360-0300}, url = {https://doi.org/10.1145/3439950}, doi = {10.1145/3439950}, abstract = {Anomaly detection, a.k.a. outlier detection or novelty detection, has been a lasting yet active research area in various research communities for several decades. There are still some unique problem complexities and challenges that require advanced approaches. In recent years, deep learning enabled anomaly detection, i.e., deep anomaly detection, has emerged as a critical direction. This article surveys the research of deep anomaly detection with a comprehensive taxonomy, covering advancements in 3 high-level categories and 11 fine-grained categories of the methods. We review their key intuitions, objective functions, underlying assumptions, advantages, and disadvantages and discuss how they address the aforementioned challenges. We further discuss a set of possible future opportunities and new perspectives on addressing the challenges.}, journal = {ACM Comput. Surv.}, month = {mar}, articleno = {38}, numpages = {38}, keywords = {novelty detection, outlier detection, deep learning, one-class classification, Anomaly detection} }
+
+
+@Article{Brodley1999,
+  Title                    = {Identifying Mislabeled Training Data},
+  Author                   = {Brodley, Carla E. and Friedl, Mark A.},
+  Journal                  = {Journal of Artificial Intelligence Research},
+  Year                     = {1999},
+}
+
+@InProceedings{Vahdat17,
+  Title                    = {Toward Robustness against Label Noise in Training Deep Discriminative
+ Neural Networks},
+  Author                   = {A. Vahdat},
+  Booktitle                = {Advances in Neural Information Processing Systems},
+  Year                     = {2017},
+}
+
+@Article{Liu_2014,
+  Title                    = {Classification with Noisy Labels by Importance Reweighting},
+  Author                   = {Liu, Tongliang and Tao, Dacheng},
+  Journal                  = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  Year                     = {2014},
+
+  Month                    = {11},
+  Volume                   = {38},
+}
+
+@InProceedings{Patrini_2017_CVPR,
+  Title                    = {Making Deep Neural Networks Robust to Label Noise: A Loss Correction Approach},
+  Author                   = {Patrini, G. and Rozza, A. and Krishna M., Aditya and Nock, R. and Qu, L.},
+  Booktitle                = {The IEEE Conference on Computer Vision and Pattern Recognition},
+  Year                     = {2017},
+}
+
+
+@InProceedings{ioffe15,
+  title = 	 {Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift},
+  author = 	 {Ioffe, Sergey and Szegedy, Christian},
+  booktitle = 	 {Proceedings of the 32nd International Conference on Machine Learning},
+  pages = 	 {448--456},
+  year = 	 {2015},
+  editor = 	 {Bach, Francis and Blei, David},
+  volume = 	 {37},
+  series = 	 {Proceedings of Machine Learning Research},
+  address = 	 {Lille, France},
+  month = 	 {07--09 Jul},
+  publisher =    {PMLR},
+  pdf = 	 {http://proceedings.mlr.press/v37/ioffe15.pdf},
+  url = 	 {https://proceedings.mlr.press/v37/ioffe15.html},
+  abstract = 	 {Training Deep Neural Networks is complicated by the fact that the distribution of each layer’s inputs changes during training, as the parameters of the previous layers change. This slows down the training by requiring lower learning rates and careful parameter initialization, and makes it notoriously hard to train models with saturating nonlinearities. We refer to this phenomenon as internal covariate shift, and address the problem by normalizing layer inputs. Our method draws its strength from making normalization a part of the model architecture and performing the normalization for each training mini-batch. Batch Normalization allows us to use much higher learning rates and be less careful about initialization, and in some cases eliminates the need for Dropout. Applied to a stateof-the-art image classification model, Batch Normalization achieves the same accuracy with 14 times fewer training steps, and beats the original model by a significant margin. Using an ensemble of batch-normalized networks, we improve upon the best published result on ImageNet classification: reaching 4.82% top-5 test error, exceeding the accuracy of human raters.}
+}
+
+
+
+@book{santambrogio2015optimal,
+  title={Optimal Transport for Applied Mathematicians: Calculus of Variations, PDEs, and Modeling},
+  author={Santambrogio, F.},
+  isbn={9783319208282},
+  series={Progress in Nonlinear Differential Equations and Their Applications},
+  url={https://books.google.ca/books?id=UOHHCgAAQBAJ},
+  year={2015},
+  publisher={Springer International Publishing}
+}
+
+
+@misc{Kingma2014,
+  doi = {10.48550/ARXIV.1412.6980},
+  
+  url = {https://arxiv.org/abs/1412.6980},
+  
+  author = {Kingma, Diederik P. and Ba, Jimmy},
+  
+  keywords = {Machine Learning (cs.LG), FOS: Computer and information sciences, FOS: Computer and information sciences},
+  
+  title = {Adam: A Method for Stochastic Optimization},
+  
+  publisher = {arXiv},
+  
+  year = {2014},
+  
+  copyright = {arXiv.org perpetual, non-exclusive license}
+}
