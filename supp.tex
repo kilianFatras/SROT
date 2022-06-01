@@ -44,7 +44,7 @@
 \hypersetup{
     colorlinks=true,
     linkcolor=red,
-    filecolor=magenta,      
+    filecolor=magenta,
     urlcolor=blue,
     citecolor=purple,
     pdftitle={Overleaf Example},
@@ -126,7 +126,7 @@ where $\yy_s$ (resp. $\yy_t$) is the source (resp. target) sample label. We stud
     \centering
     \caption{Hard weighting strategy}\label{alg_app:hard}
     \begin{algorithmic}[1]
-        \State \text{Data processing} 
+        \State \text{Data processing}
         \State \text{Train classifier $f_\theta$ with $L_{\text{AR}}$}
         \State \text{Define $\boldsymbol{a}^\prime, \boldsymbol{b}^\prime$}
         \State \text{Compute OT cost $h_c(\boldsymbol{a}^\prime, \boldsymbol{b}^\prime)$}
@@ -139,7 +139,7 @@ where $\yy_s$ (resp. $\yy_t$) is the source (resp. target) sample label. We stud
     \centering
     \caption{Soft weighting strategy}\label{alg_app:soft}
     \begin{algorithmic}[1]
-        \State \text{Data processing} 
+        \State \text{Data processing}
         \State \text{Train classifier $f_\theta$ with $L_{\text{AR}}$ }
         \State \text{Compute $c^\prime$ }
         \State \text{Compute OT cost $h_{c^\prime}(\boldsymbol{a}, \boldsymbol{b})$}
@@ -150,7 +150,7 @@ where $\yy_s$ (resp. $\yy_t$) is the source (resp. target) sample label. We stud
 The main difference between the two strategies is that the hard weighting strategy, with the Wasserstein distance, removes outliers from the empirical distributions, while the soft weighting strategy increases their moving cost and use a robust OT variant to not transport them. As such, the OT cost $h$ in the strategies is different and the input probability distributions are not equal, explaining why the two formulations are generally different. To explain similar results in the gradient flow experiment on the CelebA dataset, we illustrate that the SROT soft formulation based on Partial OT, with a rescaling of measures, can be seen as a Wasserstein flow between rescaled measures.
 
 %The classifier is used in the two strategies to detect the proportion of outliers in datasets. For the gradient flow in high dimension where the distribution $\alpha$ has $10\%$ of outliers.
-We explain how the different strategies work on the gradient flow experiment. The classifier trained with adversarial regularization was able to detect the $10\%$ outliers of the distribution $\alpha$. Thus what we want to do is to transport the full $\beta$ distribution to the remaining 90$\%$ of $\alpha$ samples corresponding to $\alpha_c$, \emph{i.e.,} $\alpha = \frac{1}{n} \sum_{i=1}^n \delta_{\xx_i}$ and $\beta = \frac{1}{N} \sum_{j=1}^N \delta_{\zz_j}$. The hard weighting strategy naturally removes these outliers and only keeps the 90$\%$ of clean samples, then it normalizes the measure to have a probability measure of clean samples. The soft weighting strategy however increases the moving cost of the outliers. We then rely on Partial OT to only transport clean samples with an amount of mass to transfer equal to $0.9$. However as the measures have different mass the measure $\beta$ ($\|\beta\|_1 = 1.$) would not be perfectly matched to the clean measure $\alpha_c$ ($\|\alpha_c\|_1 = 0.9$) at convergence. 
+We explain how the different strategies work on the gradient flow experiment. The classifier trained with adversarial regularization was able to detect the $10\%$ outliers of the distribution $\alpha$. Thus what we want to do is to transport the full $\beta$ distribution to the remaining 90$\%$ of $\alpha$ samples corresponding to $\alpha_c$, \emph{i.e.,} $\alpha = \frac{1}{n} \sum_{i=1}^n \delta_{\xx_i}$ and $\beta = \frac{1}{N} \sum_{j=1}^N \delta_{\zz_j}$. The hard weighting strategy naturally removes these outliers and only keeps the 90$\%$ of clean samples, then it normalizes the measure to have a probability measure of clean samples. The soft weighting strategy however increases the moving cost of the outliers. We then rely on Partial OT to only transport clean samples with an amount of mass to transfer equal to $0.9$. However as the measures have different mass the measure $\beta$ ($\|\beta\|_1 = 1.$) would not be perfectly matched to the clean measure $\alpha_c$ ($\|\alpha_c\|_1 = 0.9$) at convergence.
 
 One easy way to fix this is to rescale the $\beta$ mass to 0.9, \emph{i.e.,} $\|\beta\|_1 = 0.9$, as we did in our experiment. Then the empirical measures $\alpha_c$ and $\beta$ would have the same number of atoms and their atom the same weight, \emph{i.e.,} $\alpha_c = \frac{0.9}{N} \sum_{i=1}^N \delta_{\xx_i}$ and $\beta = \frac{0.9}{N} \sum_{j=1}^N \delta_{\zz_j}$. Using Partial OT we would entirely transport the rescaled $\beta$ to the rescaled $\alpha_c$, which is equivalent to a Wasserstein distance flow between rescaled $\beta$ and $\alpha_c$ measures. That is why we have similar results between our two strategies. The difference in the mass also explains the difference of convergence speed as the norm of gradients are smaller for the soft weighting strategy (see Figure 5 of the main paper). In the next paragraph, we give results of our SROT soft weighting strategy without this rescaling to show the differences in the flows.
 
@@ -167,8 +167,8 @@ One easy way to fix this is to rescale the $\beta$ mass to 0.9, \emph{i.e.,} $\|
 \paragraph{SROT soft weighting results without rescaling}
 In this experiment we show that without the measure rescaling, even if the classifier detects outliers, our SROT soft weighting strategy is not able to match the measure $\alpha_c$. This is similar to our 2D gradient flow example.
 
-Our quantitative metric of the Wasserstein distance between the measures $\beta_t$ and $\alpha_c$ can be seen in Figure \ref{fig_app:gradient_flow_wass_values}. We can see that the Wasserstein distance between our SROT soft flow and $\alpha_c$ is smaller than the Wasserstein distance between other flows and $\alpha_c$. It shows that our SROT soft flow is closer to the clean measure $\alpha_c$ than competitors. However the Wasserstein distance between our SROT soft flow and $\alpha_c$ is not close to 0 which shows that our flow without the rescaling strategy does not recover the $\alpha_c$ measure as opposed to SROT soft flow with the rescaling strategy. 
-%We do not plot the result for the hard weighting strategy as it would compress the results of the other flows. 
+Our quantitative metric of the Wasserstein distance between the measures $\beta_t$ and $\alpha_c$ can be seen in Figure \ref{fig_app:gradient_flow_wass_values}. We can see that the Wasserstein distance between our SROT soft flow and $\alpha_c$ is smaller than the Wasserstein distance between other flows and $\alpha_c$. It shows that our SROT soft flow is closer to the clean measure $\alpha_c$ than competitors. However the Wasserstein distance between our SROT soft flow and $\alpha_c$ is not close to 0 which shows that our flow without the rescaling strategy does not recover the $\alpha_c$ measure as opposed to SROT soft flow with the rescaling strategy.
+%We do not plot the result for the hard weighting strategy as it would compress the results of the other flows.
 
 Regarding qualitative results, we show some images of some converged flows in Figure \ref{fig_app:gen_imgs_gradient_flow}. One can see that our SROT soft weighting flow has some Gaussian random samples. These Gaussian random samples are initial samples from $\beta_0$ which have not been transported.
 
@@ -218,7 +218,7 @@ Following \cite{NIPS2017_dfd7468a}, the generator and the critic networks are co
 We compare our SROT methods to the robust OT variant from \cite{RobustOptimalTransport2022Nietert} which generalizes \cite{balaji2020robust}. Note that the variant from \cite{mukherjee2020outlierrobust} does not scale in high dimension as already discussed in \cite{RobustOptimalTransport2022Nietert}, which explains why we do not consider it.
 
 \subsection{Gradient flows}
-In this section, we discuss in more details the training procedure of our gradient flows experiments in high dimension. Let $\alpha$ be a given measure, the purpose of gradient flows is to model a measure $\beta_t$ which at each iteration follows the gradient direction minimizing the loss $\beta_t \mapsto h(\alpha, \beta_t)$ \citep{COT_Peyre, liutkus19a}, where $h$ stands for any OT cost (W, $\operatorname{OT}_{\texttt{TV}}^{\tau, \varepsilon}, \operatorname{ROT}_\rho$). The gradient flow can be seen as a non parametric data fitting problem where the modeled measure $\beta$ is parametrized by a vector position $\xx$ that encodes its support. 
+In this section, we discuss in more details the training procedure of our gradient flows experiments in high dimension. Let $\alpha$ be a given measure, the purpose of gradient flows is to model a measure $\beta_t$ which at each iteration follows the gradient direction minimizing the loss $\beta_t \mapsto h(\alpha, \beta_t)$ \citep{COT_Peyre, liutkus19a}, where $h$ stands for any OT cost (W, $\operatorname{OT}_{\texttt{TV}}^{\tau, \varepsilon}, \operatorname{ROT}_\rho$). The gradient flow can be seen as a non parametric data fitting problem where the modeled measure $\beta$ is parametrized by a vector position $\xx$ that encodes its support.
 
 \subsubsection{Source and target datasets}
 The considered dataset is the CelebA dataset \citep{liu2015faceattributes} and our measure $\alpha$ is composed of 2700 female images, corresponding to the clean measure $\alpha_c$, and 300 Gaussian random samples $\mathcal{N}(0, 0.01I_d)$ as outliers while the $\beta$ measure is composed of 3000 Gaussian random samples $\mathcal{N}(0, 0.01I_d)$. The female images have been preprocessed as follows: we apply a center crop of size $128\times 128$ before resizing them as $64 \times 64$ images and normalizing them.
@@ -244,28 +244,28 @@ In this section, we present an extra experiment which seeks a map to transform M
     \includegraphics[width=1.\linewidth]{figs/Monge/all_cost_MNIST_SVHN.pdf}
   \end{center}
   \vspace{-0.cm}
-    \caption{\textbf{(MNIST$\rightarrow$SVHN)} Different ground costs which composed the ground cost used in our SROT soft weighting method. The first 300 target samples are outliers. (Left plot) is the ground cost representing the new terms based on the classifier prediction. (Middle plot) represents the Euclidean distance between all source and target samples. (Right plot) is our total ground cost with $\gamma = \operatorname{max_{1\leq i,j \leq n}}(\|\xx_i - \yy_j\|_{2})$.}
+    \caption{\textbf{(MNIST$\rightarrow$SVHN)} Different ground costs which composed the ground cost used in our SROT soft weighting method. The first 300 source samples are outliers. The left plot is the ground cost representing the new ground cost terms based on the classifier prediction. The middle plot represents the Euclidean distance between all source and target samples. The right plot is our total ground cost with $\gamma = \operatorname{max_{1\leq i,j \leq n}}(\|\xx_i - \yy_j\|_{2})$.}
     \label{fig_app:all_ground_costs_MS}
   \vspace{-0cm}
 \end{figure}
 
 \subsection{Considered problem}
-In this section, we look for an optimal transport map which transforms a measure into another following \cite{seguy2018large}. To get such a map, we can rely on the optimal transport plan of the Kantorovich problem $\Pi$, which defines a map between the source and target samples through the computation of the so-called barycentric projection. The barycentric projection transports source (resp. target) samples to the target (resp. source) samples using the OT plan. For each source sample $\xx_i$, the corresponding target element can be computed as follows: $\Pi_{\xx_i} =\sum_{j=1}^n \pi_{i,j} \zz_j$. We could then define a map $T$ which maps a sample to its corresponding barycentric projection. When the ground cost is the squared Euclidean distance, the map $T$ associated to the barycentric projection of $\Pi$ can be the solution of the famous Monge problem \citep{santambrogio2015optimal, COT_Peyre}:
+In this section, we look for an optimal transport map which transforms a measure into another following \cite{seguy2018large}. To get such a map, we can rely on the optimal transport plan of the Kantorovich problem $\Pi$, which defines a map between the source and target samples through the computation of the so-called barycentric projection. The barycentric projection transports source (resp. target) samples to the target (resp. source) samples using the OT plan. For each target sample $\zz_j$, the corresponding source element can be computed as follows: $\Pi_{\zz_j} =\sum_{i=1}^n \pi_{i,j} \xx_i$. We could then define a map $T$ which maps a sample to its corresponding barycentric projection. When the ground cost is the squared Euclidean distance, the map $T$ associated to the barycentric projection of $\Pi$ can be the solution of the famous Monge problem \citep{santambrogio2015optimal, COT_Peyre}:
 
 \begin{definition}[Monge problem]
-Consider 2 discrete probability measures $\alpha = \sum_{i=1}^N a_i\delta_{\xx_i}, \beta = \sum_{j=1}^N b_j\delta_{\zz_j}$ and a ground cost $c$. The Monge problem seeks a map $T:\{\xx_1, \dots, \xx_n\}\rightarrow \{\yy_1, \dots, \yy_m\}$ which minimizes the problem:
+Consider 2 discrete probability measures $\alpha = \sum_{i=1}^N a_i\delta_{\xx_i}, \beta = \sum_{j=1}^N b_j\delta_{\zz_j}$ and a ground cost $c$. The Monge problem seeks a map $T:\{\zz_1, \dots, \zz_N\} \rightarrow  \{\xx_1, \dots, \xx_N\}$ which minimizes the problem:
 \begin{equation}
-    \underset{T}{\operatorname{min}} \left\{ \sum_{i=1}^N c(\xx_i, T(\xx_i)) a_i: T_{\#\alpha} = \bbeta \right\},
+    \underset{T}{\operatorname{min}} \left\{ \sum_{j=1}^N c(T(\zz_j), \zz_j) b_j: T_{\#\beta} = \alpha \right\},
 \end{equation}
 \end{definition}
-where $T_{\theta \# \alpha}$ is the push-forward measure of $\alpha$ by $T_\theta$. A map solving the above problem is called a Monge map. The Monge map is intractable in the continuous case. However, we can approximate the Monge map $T$ using a deep neural network $T_\theta$ trained to approximate the barycentric projection of source samples to target samples. Formally we are looking for the solution of the problem:
+where $T_{ \# \beta}$ is the push-forward measure of $\beta$ by $T$. A map solving the above problem is called a Monge map. The Monge map is intractable in the continuous case. However, we can approximate the Monge map $T$ using a deep neural network $T_\theta$ trained to approximate the barycentric projection of $\beta$ samples to $\alpha$ samples. Formally we are looking for the solution of the problem:
 \begin{align}
-    \theta^\star &= \underset{\theta}{\operatorname{min}} \sum_{i,j} c(T_\theta(\xx_i), \zz_j) \Pi_{i,j}^\star, \\
+    \theta^\star &= \underset{\theta}{\operatorname{argmin}} \sum_{i,j} c(\xx_i, T_\theta(\zz_j)) \Pi_{i,j}^\star, \\
     & \text{ with } \Pi_{i,j}^\star = \underset{\Pi \in \mathcal{U}(\boldsymbol{a}, \boldsymbol{b})}{\operatorname{argmin}} <\Pi, C(\XX, \ZZ)>,\\
     & \text{ where } C(\XX, \ZZ) = \Big( c(\xx_i, \zz_j) \Big)_{1 \leq i,j \leq n}.
 \end{align}
 
-Intuitively, the map $T_\theta$ would transform the $\xx_i$ to its barycentric projection on the target domain. In the case of second type outliers, it is likely that some samples $\xx_i$ would be matched to second type outliers. That is why we want to study the relevance of our SROT methods in this context.
+Intuitively, the map $T_\theta$ would transform the sample $\zz_j$ to its barycentric projection on the source domain. In the case of second type outliers, it is likely that some samples $\zz_j$ would be matched to second type outliers. That is why we want to study the relevance of our SROT methods in this context. Thus the purpose of this experiment is to transform the target samples in clean source samples and not in outliers present in the source measures.
 
 
 \begin{figure}[t]
@@ -273,16 +273,16 @@ Intuitively, the map $T_\theta$ would transform the $\xx_i$ to its barycentric p
     \includegraphics[width=1.\linewidth]{figs/Monge/all_cost_MNIST_MNIST_M.pdf}
   \end{center}
   \vspace{-0.cm}
-    \caption{\textbf{(MNIST$\rightarrow$MNISTM)} Different ground costs which composed the ground cost used in our SROT soft weighting method. The first 300 target samples are outliers. (Left plot) is the ground cost representing the new terms based on the classifier prediction. (Middle plot) represents the Euclidean distance between all source and target samples. (Right plot) is our total ground cost with $\gamma = \operatorname{max_{1\leq i,j \leq n}}(\|\xx_i - \yy_j\|_{2})$.}
+    \caption{\textbf{(MNIST$\rightarrow$MNISTM)} Different ground costs which composed the ground cost used in our SROT soft weighting method. The first 300 source samples are outliers. The left plot is the ground cost representing the new ground cost terms based on the classifier prediction. The middle plot represents the Euclidean distance between all source and target samples. The right plot is our total ground cost with $\gamma = \operatorname{max_{1\leq i,j \leq n}}(\|\xx_i - \yy_j\|_{2})$.}
     \label{fig_app:all_ground_costs_MMM}
   \vspace{-0cm}
 \end{figure}
 
 \subsection{Datasets}
 
-We consider the class of digits "1" from the MNIST dataset as source domain and the MNIST-M \citep{DANN}, or SVHN datasets \citep{svhn} as target domains. MNIST is composed of 60,000 $28\times 28$ images of handwritten digits and MNIST-M has those same 60,000 MNIST images but with color patches \cite{DANN}. The Street View House Numbers (SVHN) dataset \cite{svhn} consists of 73, 257 $32 \times 32$ images with digits and numbers in natural scenes. 
+We consider the class of digits "1" from the MNIST dataset as target domain and the MNIST-M \citep{DANN}, or SVHN datasets \citep{svhn} as source domains. MNIST is composed of 60,000 $28\times 28$ images of handwritten digits and MNIST-M has those same 60,000 MNIST images but with color patches \citep{DANN}. The Street View House Numbers (SVHN) dataset \citep{svhn} consists of 73, 257 $32 \times 32$ images with digits and numbers in natural scenes.
 
-The source dataset is composed of 1700 "1" MNIST digits. Regarding the target dataset, we have 1700 clean "1" digit samples from the MNIST-M or SVHN dataset while the remaining 300 samples are outliers corresponding to "1" digits from the MNIST dataset. The noise rate is set to $15\%$.
+The target dataset is composed of 1700 "1" MNIST digits. Regarding the source dataset, we have 1700 clean "1" digit samples from the MNIST-M or SVHN dataset corresponding to $\alpha_c$ while the remaining 300 samples are outliers corresponding to "1" digits from the MNIST dataset corresponding to $\alpha_o$. The noise rate is set to $15\%$.
 
 
 \begin{figure}[t]
@@ -290,7 +290,7 @@ The source dataset is composed of 1700 "1" MNIST digits. Regarding the target da
     \includegraphics[width=1.\linewidth]{figs/Monge/gen_imgs_fig_paper_MNIST_SVHN.pdf}
   \end{center}
   \vspace{-0.25cm}
-    \caption{\textbf{(MNIST$\rightarrow$SVHN)} Converged Monge map $T_\theta$ on the MNIST to SVHN task for different OT losses. $\alpha$ samples are 1700 MNIST samples while $\beta$ samples are 1700 clean SVHN images and 300 MNIST second type outliers. Our classifier detects MNIST samples present in the target dataset. Our SROT hard and soft weighting methods do not converged to any MNIST samples contrary to other OT flows.}
+    \caption{\textbf{(MNIST$\rightarrow$SVHN)} Converged Monge map $T_\theta$ on the MNIST to SVHN task for different OT losses. $\beta$ samples are 1700 MNIST samples while $\alpha$ samples are 1700 clean SVHN images and 300 MNIST second type outliers. Our classifier detects MNIST samples present in the source dataset. Our SROT hard and soft weighting methods do not converged to any MNIST samples contrary to other OT flows.}
     \label{fig_app:gen_imgs_gradient_flow_MS}
   \vspace{-0.3cm}
 \end{figure}
@@ -300,7 +300,7 @@ The source dataset is composed of 1700 "1" MNIST digits. Regarding the target da
     \includegraphics[width=1.\linewidth]{figs/Monge/gen_imgs_fig_paper_MNIST_MNIST_M.pdf}
   \end{center}
   \vspace{-0.25cm}
-    \caption{\textbf{(MNIST$\rightarrow$MNIST-M)} Converged Monge map $T_\theta$ on the MNIST to MNIST-M task for different OT losses. $\alpha$ samples are 1700 MNIST samples while $\beta$ samples are 1700 clean MNIST-M images and 300 MNIST second type outliers. Our classifier detects MNIST samples present in the target dataset. Our SROT hard and soft weighting methods do not converged to any MNIST samples contrary to other OT flows.}
+    \caption{\textbf{(MNIST$\rightarrow$MNIST-M)} Converged Monge map $T_\theta$ on the MNIST to MNIST-M task for different OT losses. $\beta$ samples are 1700 MNIST samples while $\alpha$ samples are 1700 clean MNIST-M images and 300 MNIST second type outliers. Our classifier detects MNIST samples present in the source dataset. Our SROT hard and soft weighting methods do not converged to any MNIST samples contrary to other OT flows.}
     \label{fig_app:gen_imgs_gradient_flow_MMM}
   \vspace{-0.3cm}
 \end{figure}
@@ -308,15 +308,15 @@ The source dataset is composed of 1700 "1" MNIST digits. Regarding the target da
 
 \subsection{Results}
 
-The purpose of our experiment is to transform the source samples in clean target samples and to not transform MNIST samples into MNIST samples (outliers of the target domain). To achieve this, we use the optimal transport plan from several OT variants. We compare our SROT methods with the Wasserstein distance and the Partial OT cost (amount of transported mass $m=\{0.9, 0.85, 0.7, 0.5\}$). Our SROT hard weighting method uses the Wasserstein distance while the SROT soft weighting method uses the Partial OT cost with $m=0.85$. Note that we use our rescaling trick for our SROT soft weighting method. 
+The purpose of our experiment is to transform the target samples in clean source samples and to not transform MNIST samples into MNIST outliers of the source domain. To achieve this, we use the optimal transport plan from several OT variants. We compare our SROT methods with the Wasserstein distance and the Partial OT cost (amount of transported mass $m=\{0.9, 0.85, 0.7, 0.5\}$). Our SROT hard weighting method uses the Wasserstein distance while the SROT soft weighting method uses the Partial OT cost with $m=0.85$. Note that we use our rescaling trick for our SROT soft weighting method.
 
-The classifier that we consider to classify source and target samples is able to detect the second type MNIST outliers for both tasks (MNIST$\rightarrow$SVHN and MNIST$\rightarrow$MNIST-M). To demonstrate this, we show the different ground costs associated with SROT soft weighting in Figure \ref{fig_app:all_ground_costs_MS} and \ref{fig_app:all_ground_costs_MMM} for the MNIST$\rightarrow$SVHN and MNIST$\rightarrow$MNIST-M tasks respectively. The ground costs associated to the classifier can be found in the left plot of these figures. One can see that the 300 first target samples have a larger cost than the remaining samples and these 300 samples are the outliers. It shows that we are able to detect the outliers. Note that the Euclidean distance between outliers and source samples is smaller than the Euclidean cost between source and clean target samples,  showing that outliers are of second type. Now that we have detected outliers, we want to check if we do not match any of them. 
+The classifier that we consider to classify source and target samples is able to detect the second type MNIST outliers for both tasks (MNIST$\rightarrow$SVHN and MNIST$\rightarrow$MNIST-M). To demonstrate this, we show the different ground costs associated with SROT soft weighting in Figure \ref{fig_app:all_ground_costs_MS} and \ref{fig_app:all_ground_costs_MMM} for the MNIST$\rightarrow$SVHN and MNIST$\rightarrow$MNIST-M tasks respectively. The ground costs associated to the classifier can be found in the left plot of these figures. One can see that the 300 first source samples have a larger cost than the remaining samples and these 300 samples are the outliers, showing that we are able to detect the outliers. Note that the Euclidean distance between outliers and source samples is smaller than the Euclidean cost between clean source and target samples, showing that outliers are of second type. Now that we have detected outliers, we want to check if we do not match any of them.
 
-We can qualitatively assess our methods by looking at the produced images of the converged map $T_{\theta}$. The results for the MNIST to SVHN (resp. MNIST-M) task can be found in Figure \ref{fig_app:gen_imgs_gradient_flow_MS} (resp. \ref{fig_app:gen_imgs_gradient_flow_MMM}). We can see that contrary to the other methods, SROT hard and soft weighting do not generate any MNIST images. Note that some MNIST images do not have a background as black as it could be expected in the two figures because of the renormalizations between all samples when plotting the images.  %\kf{Results : Qualitative (images), quantitative, Wasserstein distance $W(T_{\#\alpha}, \bbeta)$.}
+We can qualitatively assess our methods by looking at the produced images of the converged map $T_{\theta}$. The results for the MNIST to SVHN (resp. MNIST-M) task can be found in Figure \ref{fig_app:gen_imgs_gradient_flow_MS} (resp. \ref{fig_app:gen_imgs_gradient_flow_MMM}). We can see that contrary to the other methods, SROT hard and soft weighting do not generate any MNIST images. Note that some MNIST images do not have a background as black as it could be expected in the two competitor figures because of the renormalizations between all samples when plotting the images.  %\kf{Results : Qualitative (images), quantitative, Wasserstein distance $W(T_{\#\alpha}, \bbeta)$.}
 
-Then, we can have a quantitative metric similar to the one developed in the gradient flow experiment. Instead of computing the Wasserstein distance between the flow and the clean measure, we can compute the Wasserstein distance between the pushforward measure $T_{\theta \# \alpha}$ and the clean measure $\beta_c$. Indeed, if we are able to detect outliers and remove their influence from the problem, we should be able to match the clean measure. The results can be found in Figures \ref{fig_app:gradient_flow_wass_values_MS} and \ref{fig_app:gradient_flow_wass_values_MMM} for both tasks. We also plot the loss value to show that the loss is minimized for each method. 
+Then, we can have a quantitative metric similar to the one developed in the gradient flow experiment. Instead of computing the Wasserstein distance between the flow and the clean measure, we can compute the Wasserstein distance between the pushforward measure $T_{\theta \# \beta}$ and the clean measure $\alpha_c$. Indeed, if we are able to detect outliers and remove their influence from the problem, we should be able to match the clean measure. The results can be found in Figures \ref{fig_app:gradient_flow_wass_values_MS} and \ref{fig_app:gradient_flow_wass_values_MMM} for both tasks. We also plot the loss value $h(\alpha, T_{\theta \# \beta})$ to show that the loss is minimized for each method.
 
-They show that the only methods which get very close to the clean target measures $\beta_c$ are our SROT methods. This shows that our methods largely mitigate the impact of outliers compare to competitors. We also note that in this case the soft weighting strategy performs slightly better than the hard weighting strategy on the MNIST$\rightarrow$SVHN task. It is because the classifier used in the soft strategy detected all outliers while the one used in the hard weighting strategy detected 0.999$\%$ of them. Thus the hard weighting strategy transported 0.001$\%$ of the mass of all outliers. Finally, we empirically saw that all competitor methods fully transported the $15\%$ of outliers contrary to our methods.
+They show that the only methods which get very close to the clean source measures $\alpha_c$ are our SROT methods. This shows that our methods largely mitigate the impact of outliers compare to competitors. We also note that in this case the soft weighting strategy performs slightly better than the hard weighting strategy on the MNIST$\rightarrow$SVHN task. It is because the classifier used in the soft strategy detected all outliers while the one used in the hard weighting strategy detected 0.999$\%$ of them. Thus the hard weighting strategy transported 0.001$\%$ of the mass of all outliers. Finally, we empirically saw that all competitor methods fully transported the $15\%$ of outliers contrary to our methods.
 
 
 
@@ -328,7 +328,7 @@ They show that the only methods which get very close to the clean target measure
     \includegraphics[width=1.\linewidth]{figs/Monge/wasserstein_distance_evolution_rot_MNIST_SVHN.pdf}
   \end{center}
   \vspace{-0.cm}
-    \caption{\textbf{(MNIST$\rightarrow$SVHN)} Wasserstein distance between push-forward measure $T_{\#\alpha}$ from different optimal transport costs and clean $\beta_c$ ($W(T_{\#\alpha}, \beta_c)$) and as well as loss value ($h(T_{\#\alpha}, \beta_c)$) on the MNIST$\rightarrow$SVHN task.  $\alpha$ samples are 1700 MNIST samples while $\beta$ samples are 1700 clean SVHN images and 300 MNIST samples. Our methods SROT hard and soft weighting are able to match the clean target distribution $\beta_c$.}
+    \caption{\textbf{(MNIST$\rightarrow$SVHN)} Wasserstein distance between push-forward measure $T_{\#\beta}$ from different optimal transport costs and clean $\alpha_c$ ($W(\alpha_c, T_{\#\beta})$) and as well as loss value ($h(\alpha, T_{\#\beta})$) on the MNIST$\rightarrow$SVHN task. $\beta$  samples are 1700 MNIST samples while $\alpha$ samples are 1700 clean SVHN images and 300 MNIST samples. Our methods SROT hard and soft weighting are able to match the clean source distribution $\alpha_c$.}
     \label{fig_app:gradient_flow_wass_values_MS}
   \vspace{-0cm}
 \end{figure}
@@ -338,7 +338,7 @@ They show that the only methods which get very close to the clean target measure
     \includegraphics[width=1.\linewidth]{figs/Monge/wasserstein_distance_evolution_rot_MNIST_MNIST_M.pdf}
   \end{center}
   \vspace{-0.cm}
-    \caption{\textbf{(MNIST$\rightarrow$MNIST-M)} Wasserstein distance between push-forward measure $T_{\#\alpha}$ from different optimal transport costs and clean $\beta_c$ ($W(T_{\#\alpha}, \beta_c)$) and as well as loss value ($h(T_{\#\alpha}, \beta_c)$) on the MNIST$\rightarrow$MNIST-M task.  $\alpha$ samples are 1700 MNIST samples while $\beta$ samples are 1700 clean MNIST-M images and 300 MNIST samples. Our methods SROT hard and soft weighting are able to match the clean target distribution $\beta_c$.}
+    \caption{\textbf{(MNIST$\rightarrow$MNIST-M)} Wasserstein distance between push-forward measure $T_{\#\beta}$ from different optimal transport costs and clean $\alpha_c$ ($W(\alpha_c, T_{\#\beta})$) and as well as loss value ($h(\alpha, T_{\#\beta})$) on the MNIST$\rightarrow$MNIST-M task. $\beta$  samples are 1700 MNIST samples while $\alpha$ samples are 1700 clean MNIST-M images and 300 MNIST samples. Our methods SROT hard and soft weighting are able to match the clean source distribution $\alpha_c$.}
     \label{fig_app:gradient_flow_wass_values_MMM}
   \vspace{-0cm}
 \end{figure}
@@ -353,9 +353,9 @@ They show that the only methods which get very close to the clean target measure
 
 
 \subsection{Architecture}
-For this experiment, we considered a six convolutional and one fully connected layer classifier to classify source and target samples, similarly to the classifiers from the above experiments. The six convolutional layers are of size 32, 32, 64, 64, 128 and 128. The activation function is the Relu function expect the final activation functions which is a Sigmoid function. We use batch norm between layers. Regarding the training procedure, we used the Adam optimizer with a learning rate of 0.0002 with a batch size of 64 and 50 epochs. Our classifier trained with adversarial regularization is able to detect the MNIST samples present in the measure $\alpha$. The hyperparameters used in the adversarial regularization algorithms are similar to one used in \citep{Miyato2019, Fatras2021WAR} at the notable exception of $\eta$ which is set to 10.
+For this experiment, we considered a six convolutional and one fully connected layer classifier to classify source and target samples, similarly to the classifiers from the above experiments. The six convolutional layers are of size 32, 32, 64, 64, 128 and 128. The activation function is the Relu function expect the final activation functions which is a Sigmoid function. We use batch norm between layers. Regarding the training procedure, we used the Adam optimizer with a learning rate of 0.0001 with $\beta_1=0$ and $\beta_2= 0.9$, a batch size of 64 and 50 epochs. Our classifier trained with adversarial regularization is able to detect the MNIST samples present in the measure $\alpha$. The hyperparameters used in the adversarial regularization algorithms are similar to one used in \citep{Miyato2019, Fatras2021WAR} at the notable exception of $\eta$ which is set to 10.
 
-The Monge map $T_{\#\alpha}$ is parametrized by a four fully connected layer neural network. Their dimensions are 3072 while the input and output dimensions depend on the considered task. They are of 3072 as well for the MNIST$\rightarrow$SVHN task and 2352 for the MNIST$\rightarrow$MNIST-M task. We used Relu activation function between layers expect for the final layer. Our optimizer was Adam and the learning rate was set to 0.0002 with $\beta_1=0$ and $\beta_2= 0.9$. We trained the map $T_\theta$ for 5000 iterations and we trained on the full dataset in order to have the exact Wasserstein distance. A minibatch approach could have been used as in \cite{fatras2021minibatch} and we let this study as future work.
+The Monge map $T_{\#\beta}$ is parametrized by a four fully connected layer neural network. Their intermediate dimensions are 3072. Their input and output dimensions are 3072 for the MNIST$\rightarrow$SVHN task and 2352 for the MNIST$\rightarrow$MNIST-M task. We used Relu activation function between layers expect for the final layer. Our optimizer was Adam and the learning rate was set to 0.0002 with $\beta_1=0$ and $\beta_2= 0.9$. We trained the map $T_\theta$ for 5000 iterations and we trained on the full dataset in order to have the exact Wasserstein distance. A minibatch approach could have been used as in \cite{fatras2021minibatch} and we let this study as future work.
 
 %\kf{Architecture mnge map (4 fully conntected layers)}
 \bibliography{collas2022_conference}
